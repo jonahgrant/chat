@@ -142,7 +142,7 @@ static ImageCache *imageCache = nil;
     
     UIActivityIndicatorView *spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinny.tag = SPINNY_TAG;
-	spinny.frame = CGRectMake(6, 12, 30, 30);
+	spinny.frame = CGRectMake(15, 12, 30, 30);
     [spinny startAnimating];
     [self addSubview:spinny];
     [spinny release];

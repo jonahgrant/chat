@@ -13,6 +13,7 @@
 #import "PTPusher.h"
 #import "PTPusherDelegate.h"
 #import "PTPusherChannelDelegate.h"
+#import "Three20/Three20.h"
 
 @class SA_OAuthTwitterEngine;  
 @class AsyncImageView;

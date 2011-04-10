@@ -11,6 +11,7 @@
 #import "PTPusher.h"
 #import "PTPusherEvent.h"
 #import "PTPusherChannel.h"
+#import "Three20/Three20.h"
 
 #define kOAuthConsumerKey        @"StQR6yZ9xgRkqFHI8TO1w"
 #define kOAuthConsumerSecret    @"byWDt5n6Z3RqHn9IcwPSGiABX0fiHdfqFmflwfLA"
@@ -70,8 +71,17 @@
 	[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
 	
 	table.showsVerticalScrollIndicator = NO;
+	
+	table.showsVerticalScrollIndicator = NO;
+	
+	TTURLMap* map = [TTNavigator navigator].URLMap; 
+	[map from:@"*" toViewController:self selector:@selector(handleLink:)]; 
 }
 
+- (void)handleLink:(id)sender
+{
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", sender]]];
+}
 - (void)handlePusherEvent:(NSNotification *)note;
 {
 	NSLog(@"Received event: %@", note.object);
@@ -91,6 +101,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	NSLog(@"id is: %@", [prefs stringForKey:@"user_id"]);
 	
 	table = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320, self.view.frame.size.height - 40.0)];
 	table.dataSource = self;
@@ -391,7 +404,6 @@
 	}
 	
 	/*
-	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, message.frame.size.height);
 	messageView = [[UITextView alloc] initWithFrame:frame];
 	messageView.editable = NO;
 	messageView.backgroundColor = [UIColor clearColor];
@@ -399,8 +411,18 @@
 	[cell addSubview:messageView];
 	 */
 	
+	
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
-		
+	
+	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, message.frame.size.height);
+	TTStyledTextLabel *htmlLabel = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
+	htmlLabel.userInteractionEnabled = YES;
+	htmlLabel.textColor = [UIColor darkGrayColor];
+	htmlLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
+	htmlLabel.backgroundColor = [UIColor clearColor];
+	htmlLabel.text = [TTStyledText textFromXHTML:[event.data valueForKey:@"body"] lineBreaks:YES URLs:YES];
+	[cell addSubview:htmlLabel];
+	
 	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 79, 300, 2)];
 	lineView.tag = 101;
 	[lineView setLineColor:[UIColor colorWithRed:186.0/255.0 green:185.0/255.0 blue:185.0/255.0 alpha:1.0]];
@@ -408,7 +430,7 @@
 	
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-	message.text = [event.data valueForKey:@"body"];
+	message.text = nil;
 	name.text = [event.data valueForKey:@"name"];
 
 	[(AsyncImageView *)[cell.contentView viewWithTag:104] setBackgroundColor:[UIColor clearColor]];
@@ -424,12 +446,6 @@
     [textField resignFirstResponder];
 	
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Groupon Go"
-													message:[NSString stringWithFormat:@"%@", [event.data valueForKey:@"body"]]
-												   delegate:nil 
-										  cancelButtonTitle:@"Close"
-										  otherButtonTitles:nil];
-	[alert show];
 }
 
 

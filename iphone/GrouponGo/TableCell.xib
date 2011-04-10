@@ -50,7 +50,7 @@
 							<object class="IBUILabel" id="318342633">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{84, 8}, {229, 23}}</string>
+								<string key="NSFrame">{{84, 3}, {229, 23}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -85,7 +85,7 @@
 							<object class="IBUILabel" id="504200471">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{84, 29}, {229, 44}}</string>
+								<string key="NSFrame">{{84, 24}, {229, 56}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -116,7 +116,7 @@
 							<object class="IBUIView" id="366101141">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{15, 14}, {54, 54}}</string>
+								<string key="NSFrame">{{15, 9}, {54, 54}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -129,7 +129,7 @@
 							<object class="IBUIImageView" id="576030499">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{11, 10}, {62, 63}}</string>
+								<string key="NSFrame">{{11, 5}, {62, 63}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -285,7 +285,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABCqAAAwpAAAA</bytes>
 					</object>
-					<string>{{0, 760}, {320, 85}}</string>
+					<string>{{-433, 692}, {320, 85}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -338,13 +338,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">JSON/SBProxyForJson.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">NSObject+YAJL.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

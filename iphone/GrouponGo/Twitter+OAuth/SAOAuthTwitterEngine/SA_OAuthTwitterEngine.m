@@ -216,17 +216,25 @@
 - (NSString *) extractUsernameFromHTTPBody: (NSString *) body {
 	if (!body) return nil;
 	
-	NSArray					*tuples = [body componentsSeparatedByString: @"&"];
+	NSArray	*tuples = [body componentsSeparatedByString: @"&"];
+	NSLog(@"tuples: %@", tuples);
+
 	if (tuples.count < 1) return nil;
 	
 	for (NSString *tuple in tuples) {
 		NSArray *keyValueArray = [tuple componentsSeparatedByString: @"="];
+		NSLog(@"key value array: %@", keyValueArray);
+
+
+		NSLog(@"set %@ as the user_id but the other one is %@", [keyValueArray objectAtIndex:0], [keyValueArray objectAtIndex:1]);
 		
 		if (keyValueArray.count == 2) {
 			NSString				*key = [keyValueArray objectAtIndex: 0];
 			NSString				*value = [keyValueArray objectAtIndex: 1];
 			
+			NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 			if ([key isEqualToString:@"screen_name"]) return value;
+			if ([key isEqualToString:@"user_id"]) [prefs setObject:value forKey:@"user_id"];
 		}
 	}
 	
@@ -238,14 +246,18 @@
 	if (!ID) return nil;
 	
 	NSArray	*tuples = [ID componentsSeparatedByString: @"&"];
+	NSLog(@"tuples: %@", tuples);
+	
 	if (tuples.count < 1) return nil;
 	
 	for (NSString *tuple in tuples) {
 		NSArray *keyValueArray = [tuple componentsSeparatedByString: @"="];
+		NSLog(@"key value array: %@", keyValueArray);
 		
 		if (keyValueArray.count == 2) {
 			NSString				*key = [keyValueArray objectAtIndex: 0];
 			NSString				*value = [keyValueArray objectAtIndex: 1];
+			NSLog(@"key: %@ value: %@", key, value);
 			
 			if ([key isEqualToString:@"user_id"]) return value;
 		}

@@ -51,21 +51,6 @@
 		AB80AA2D13501099007AEB44 /* SSMessagesViewControllerTextFieldBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB80AA2613501099007AEB44 /* SSMessagesViewControllerTextFieldBackground@2x.png */; };
 		AB80AA471350135D007AEB44 /* SSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA461350135D007AEB44 /* SSTextField.m */; };
 		AB80AA4C13501380007AEB44 /* SSDrawingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA4B13501380007AEB44 /* SSDrawingUtilities.m */; };
-		AB80AAD8135016F9007AEB44 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = AB80AA7D135016F8007AEB44 /* CMakeLists.txt */; };
-		AB80AAD9135016F9007AEB44 /* yajl in Resources */ = {isa = PBXBuildFile; fileRef = AB80AA7E135016F8007AEB44 /* yajl */; };
-		AB80AADA135016F9007AEB44 /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA7F135016F8007AEB44 /* yajl.c */; };
-		AB80AADB135016F9007AEB44 /* YAJL.dxy in Resources */ = {isa = PBXBuildFile; fileRef = AB80AA80135016F8007AEB44 /* YAJL.dxy */; };
-		AB80AADC135016F9007AEB44 /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA81135016F8007AEB44 /* yajl_alloc.c */; };
-		AB80AADD135016F9007AEB44 /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA83135016F8007AEB44 /* yajl_buf.c */; };
-		AB80AADE135016F9007AEB44 /* yajl_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA86135016F8007AEB44 /* yajl_encode.c */; };
-		AB80AADF135016F9007AEB44 /* yajl_gen.c in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA88135016F8007AEB44 /* yajl_gen.c */; };
-		AB80AAE0135016F9007AEB44 /* yajl_lex.c in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA89135016F8007AEB44 /* yajl_lex.c */; };
-		AB80AAE1135016F9007AEB44 /* yajl_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA8B135016F8007AEB44 /* yajl_parser.c */; };
-		AB80AAE2135016F9007AEB44 /* NSObject+YAJL.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA8E135016F8007AEB44 /* NSObject+YAJL.m */; };
-		AB80AAE3135016F9007AEB44 /* NSString+YAJL.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA90135016F8007AEB44 /* NSString+YAJL.m */; };
-		AB80AAE4135016F9007AEB44 /* YAJLGen.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA93135016F8007AEB44 /* YAJLGen.m */; };
-		AB80AAE5135016F9007AEB44 /* YAJLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA95135016F8007AEB44 /* YAJLDocument.m */; };
-		AB80AAE6135016F9007AEB44 /* YAJLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA97135016F8007AEB44 /* YAJLParser.m */; };
 		AB80AAE7135016F9007AEB44 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA9B135016F8007AEB44 /* ASIAuthenticationDialog.m */; };
 		AB80AAE8135016F9007AEB44 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AA9E135016F8007AEB44 /* ASIDownloadCache.m */; };
 		AB80AAE9135016F9007AEB44 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AAA0135016F8007AEB44 /* ASIFormDataRequest.m */; };
@@ -373,36 +358,6 @@
 		AB80AA461350135D007AEB44 /* SSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTextField.m; sourceTree = "<group>"; };
 		AB80AA4A13501380007AEB44 /* SSDrawingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDrawingUtilities.h; sourceTree = "<group>"; };
 		AB80AA4B13501380007AEB44 /* SSDrawingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDrawingUtilities.m; sourceTree = "<group>"; };
-		AB80AA7A135016F8007AEB44 /* yajl_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_common.h; sourceTree = "<group>"; };
-		AB80AA7B135016F8007AEB44 /* yajl_gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_gen.h; sourceTree = "<group>"; };
-		AB80AA7C135016F8007AEB44 /* yajl_parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_parse.h; sourceTree = "<group>"; };
-		AB80AA7D135016F8007AEB44 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		AB80AA7E135016F8007AEB44 /* yajl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = yajl; sourceTree = "<group>"; };
-		AB80AA7F135016F8007AEB44 /* yajl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl.c; sourceTree = "<group>"; };
-		AB80AA80135016F8007AEB44 /* YAJL.dxy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YAJL.dxy; sourceTree = "<group>"; };
-		AB80AA81135016F8007AEB44 /* yajl_alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl_alloc.c; sourceTree = "<group>"; };
-		AB80AA82135016F8007AEB44 /* yajl_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_alloc.h; sourceTree = "<group>"; };
-		AB80AA83135016F8007AEB44 /* yajl_buf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl_buf.c; sourceTree = "<group>"; };
-		AB80AA84135016F8007AEB44 /* yajl_buf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_buf.h; sourceTree = "<group>"; };
-		AB80AA85135016F8007AEB44 /* yajl_bytestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_bytestack.h; sourceTree = "<group>"; };
-		AB80AA86135016F8007AEB44 /* yajl_encode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl_encode.c; sourceTree = "<group>"; };
-		AB80AA87135016F8007AEB44 /* yajl_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_encode.h; sourceTree = "<group>"; };
-		AB80AA88135016F8007AEB44 /* yajl_gen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl_gen.c; sourceTree = "<group>"; };
-		AB80AA89135016F8007AEB44 /* yajl_lex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl_lex.c; sourceTree = "<group>"; };
-		AB80AA8A135016F8007AEB44 /* yajl_lex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_lex.h; sourceTree = "<group>"; };
-		AB80AA8B135016F8007AEB44 /* yajl_parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yajl_parser.c; sourceTree = "<group>"; };
-		AB80AA8C135016F8007AEB44 /* yajl_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_parser.h; sourceTree = "<group>"; };
-		AB80AA8D135016F8007AEB44 /* NSObject+YAJL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YAJL.h"; sourceTree = "<group>"; };
-		AB80AA8E135016F8007AEB44 /* NSObject+YAJL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YAJL.m"; sourceTree = "<group>"; };
-		AB80AA8F135016F8007AEB44 /* NSString+YAJL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YAJL.h"; sourceTree = "<group>"; };
-		AB80AA90135016F8007AEB44 /* NSString+YAJL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YAJL.m"; sourceTree = "<group>"; };
-		AB80AA91135016F8007AEB44 /* YAJL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJL.h; sourceTree = "<group>"; };
-		AB80AA92135016F8007AEB44 /* YAJLGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLGen.h; sourceTree = "<group>"; };
-		AB80AA93135016F8007AEB44 /* YAJLGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAJLGen.m; sourceTree = "<group>"; };
-		AB80AA94135016F8007AEB44 /* YAJLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLDocument.h; sourceTree = "<group>"; };
-		AB80AA95135016F8007AEB44 /* YAJLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAJLDocument.m; sourceTree = "<group>"; };
-		AB80AA96135016F8007AEB44 /* YAJLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLParser.h; sourceTree = "<group>"; };
-		AB80AA97135016F8007AEB44 /* YAJLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAJLParser.m; sourceTree = "<group>"; };
 		AB80AA9A135016F8007AEB44 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		AB80AA9B135016F8007AEB44 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		AB80AA9C135016F8007AEB44 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -714,7 +669,6 @@
 				AB80AB0713501734007AEB44 /* Reachability */,
 				AB80AB02135016FC007AEB44 /* SSToolKit */,
 				AB80AA98135016F8007AEB44 /* ASIHTTPRequest */,
-				AB80AA77135016F8007AEB44 /* YAJIL */,
 				AB80A98213500CF2007AEB44 /* Twitter+OAuth */,
 			);
 			name = Libraries;
@@ -842,59 +796,6 @@
 				AB80AA2613501099007AEB44 /* SSMessagesViewControllerTextFieldBackground@2x.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		AB80AA77135016F8007AEB44 /* YAJIL */ = {
-			isa = PBXGroup;
-			children = (
-				AB80AA78135016F8007AEB44 /* src */,
-				AB80AA8D135016F8007AEB44 /* NSObject+YAJL.h */,
-				AB80AA8E135016F8007AEB44 /* NSObject+YAJL.m */,
-				AB80AA8F135016F8007AEB44 /* NSString+YAJL.h */,
-				AB80AA90135016F8007AEB44 /* NSString+YAJL.m */,
-				AB80AA91135016F8007AEB44 /* YAJL.h */,
-				AB80AA92135016F8007AEB44 /* YAJLGen.h */,
-				AB80AA93135016F8007AEB44 /* YAJLGen.m */,
-				AB80AA94135016F8007AEB44 /* YAJLDocument.h */,
-				AB80AA95135016F8007AEB44 /* YAJLDocument.m */,
-				AB80AA96135016F8007AEB44 /* YAJLParser.h */,
-				AB80AA97135016F8007AEB44 /* YAJLParser.m */,
-			);
-			name = YAJIL;
-			sourceTree = "<group>";
-		};
-		AB80AA78135016F8007AEB44 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				AB80AA79135016F8007AEB44 /* api */,
-				AB80AA7D135016F8007AEB44 /* CMakeLists.txt */,
-				AB80AA7E135016F8007AEB44 /* yajl */,
-				AB80AA7F135016F8007AEB44 /* yajl.c */,
-				AB80AA80135016F8007AEB44 /* YAJL.dxy */,
-				AB80AA81135016F8007AEB44 /* yajl_alloc.c */,
-				AB80AA82135016F8007AEB44 /* yajl_alloc.h */,
-				AB80AA83135016F8007AEB44 /* yajl_buf.c */,
-				AB80AA84135016F8007AEB44 /* yajl_buf.h */,
-				AB80AA85135016F8007AEB44 /* yajl_bytestack.h */,
-				AB80AA86135016F8007AEB44 /* yajl_encode.c */,
-				AB80AA87135016F8007AEB44 /* yajl_encode.h */,
-				AB80AA88135016F8007AEB44 /* yajl_gen.c */,
-				AB80AA89135016F8007AEB44 /* yajl_lex.c */,
-				AB80AA8A135016F8007AEB44 /* yajl_lex.h */,
-				AB80AA8B135016F8007AEB44 /* yajl_parser.c */,
-				AB80AA8C135016F8007AEB44 /* yajl_parser.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		AB80AA79135016F8007AEB44 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				AB80AA7A135016F8007AEB44 /* yajl_common.h */,
-				AB80AA7B135016F8007AEB44 /* yajl_gen.h */,
-				AB80AA7C135016F8007AEB44 /* yajl_parse.h */,
-			);
-			path = api;
 			sourceTree = "<group>";
 		};
 		AB80AA98135016F8007AEB44 /* ASIHTTPRequest */ = {
@@ -1298,9 +1199,6 @@
 				AB80AA2B13501099007AEB44 /* SSMessagesViewControllerSendButtonBackground@2x.png in Resources */,
 				AB80AA2C13501099007AEB44 /* SSMessagesViewControllerSendButtonBackground.png in Resources */,
 				AB80AA2D13501099007AEB44 /* SSMessagesViewControllerTextFieldBackground@2x.png in Resources */,
-				AB80AAD8135016F9007AEB44 /* CMakeLists.txt in Resources */,
-				AB80AAD9135016F9007AEB44 /* yajl in Resources */,
-				AB80AADB135016F9007AEB44 /* YAJL.dxy in Resources */,
 				AB80AC0913501B1F007AEB44 /* TableCell.xib in Resources */,
 				AB80AC6813501BE7007AEB44 /* white.png in Resources */,
 				ABF2A0D01350AB3D00A2E73F /* Bg@2x.png in Resources */,
@@ -1350,18 +1248,6 @@
 				AB80A9D013500CF2007AEB44 /* SA_OAuthTwitterEngine.m in Sources */,
 				AB80AA471350135D007AEB44 /* SSTextField.m in Sources */,
 				AB80AA4C13501380007AEB44 /* SSDrawingUtilities.m in Sources */,
-				AB80AADA135016F9007AEB44 /* yajl.c in Sources */,
-				AB80AADC135016F9007AEB44 /* yajl_alloc.c in Sources */,
-				AB80AADD135016F9007AEB44 /* yajl_buf.c in Sources */,
-				AB80AADE135016F9007AEB44 /* yajl_encode.c in Sources */,
-				AB80AADF135016F9007AEB44 /* yajl_gen.c in Sources */,
-				AB80AAE0135016F9007AEB44 /* yajl_lex.c in Sources */,
-				AB80AAE1135016F9007AEB44 /* yajl_parser.c in Sources */,
-				AB80AAE2135016F9007AEB44 /* NSObject+YAJL.m in Sources */,
-				AB80AAE3135016F9007AEB44 /* NSString+YAJL.m in Sources */,
-				AB80AAE4135016F9007AEB44 /* YAJLGen.m in Sources */,
-				AB80AAE5135016F9007AEB44 /* YAJLDocument.m in Sources */,
-				AB80AAE6135016F9007AEB44 /* YAJLParser.m in Sources */,
 				AB80AAE7135016F9007AEB44 /* ASIAuthenticationDialog.m in Sources */,
 				AB80AAE8135016F9007AEB44 /* ASIDownloadCache.m in Sources */,
 				AB80AAE9135016F9007AEB44 /* ASIFormDataRequest.m in Sources */,
