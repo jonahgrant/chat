@@ -85,12 +85,20 @@
 		AB80AC6713501BE7007AEB44 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AC6213501BE7007AEB44 /* ImageCache.m */; };
 		AB80AC6813501BE7007AEB44 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = AB80AC6313501BE7007AEB44 /* white.png */; };
 		AB80ACCA135022E1007AEB44 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB80ACC9135022E1007AEB44 /* QuartzCore.framework */; };
-		AB80AD1A13502A57007AEB44 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AD1913502A57007AEB44 /* Constants.m */; };
 		AB9621A31351493F00744F63 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9621A21351493F00744F63 /* CoreText.framework */; };
 		AB96221513514D0B00744F63 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = AB96221313514D0B00744F63 /* input.png */; };
 		AB96221613514D0B00744F63 /* input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB96221413514D0B00744F63 /* input@2x.png */; };
 		AB96224513514E2600744F63 /* bg_sendmessage.png in Resources */ = {isa = PBXBuildFile; fileRef = AB96224313514E2600744F63 /* bg_sendmessage.png */; };
 		AB96224613514E2600744F63 /* bg_sendmessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB96224413514E2600744F63 /* bg_sendmessage@2x.png */; };
+		ABCC44591352323E0068E5ED /* GrouponGoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC44581352323E0068E5ED /* GrouponGoModel.m */; };
+		ABCC4462135232900068E5ED /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC4461135232900068E5ED /* Constants.m */; };
+		ABCC4467135232BF0068E5ED /* GrouponGoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC4466135232BF0068E5ED /* GrouponGoRequest.m */; };
+		ABCC45CC13525D120068E5ED /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45C713525D120068E5ED /* RegexKitLite.m */; };
+		ABCC45CD13525D120068E5ED /* RKLMatchEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45C913525D120068E5ED /* RKLMatchEnumerator.m */; };
+		ABCC45CE13525D120068E5ED /* IFTweetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45CA13525D120068E5ED /* IFTweetLabel.m */; };
+		ABCC45D613525DDE0068E5ED /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCC45D513525DDE0068E5ED /* libicucore.A.dylib */; };
+		ABCC45EA13525FCE0068E5ED /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45E813525FCE0068E5ED /* MessageViewController.m */; };
+		ABCC45EB13525FCE0068E5ED /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABCC45E913525FCE0068E5ED /* MessageViewController.xib */; };
 		ABF2A0D01350AB3D00A2E73F /* Bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF2A0CF1350AB3D00A2E73F /* Bg@2x.png */; };
 		ABF2A0F51350AC4500A2E73F /* bg_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF2A0F31350AC4400A2E73F /* bg_avatar.png */; };
 		ABF2A0F61350AC4500A2E73F /* bg_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF2A0F41350AC4500A2E73F /* bg_avatar@2x.png */; };
@@ -223,49 +231,49 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* UICommonUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20UICommonUnitTests;
 		};
 		AB96243E13516C9100744F63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* Three20UnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20UnitTests;
 		};
 		AB96244113516C9100744F63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* UINavigatorUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20UINavigatorUnitTests;
 		};
 		AB96244413516C9100744F63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* CoreUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20CoreUnitTests;
 		};
 		AB96244713516C9100744F63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* UIUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20UIUnitTests;
 		};
 		AB96244A13516C9100744F63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* NetworkUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20NetworkUnitTests;
 		};
 		AB96244D13516C9100744F63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C /* StyleUnitTests.octest */;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20StyleUnitTests;
 		};
 /* End PBXContainerItemProxy section */
@@ -422,17 +430,28 @@
 		AB80AC6213501BE7007AEB44 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
 		AB80AC6313501BE7007AEB44 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		AB80ACC9135022E1007AEB44 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		AB80AD12135029C2007AEB44 /* GrouponGoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrouponGoModel.h; sourceTree = "<group>"; };
-		AB80AD13135029C2007AEB44 /* GrouponGoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrouponGoModel.m; sourceTree = "<group>"; };
-		AB80AD1613502A39007AEB44 /* GrouponGoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrouponGoRequest.h; sourceTree = "<group>"; };
-		AB80AD1713502A39007AEB44 /* GrouponGoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrouponGoRequest.m; sourceTree = "<group>"; };
-		AB80AD1813502A57007AEB44 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		AB80AD1913502A57007AEB44 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		AB9621A21351493F00744F63 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		AB96221313514D0B00744F63 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
 		AB96221413514D0B00744F63 /* input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input@2x.png"; sourceTree = "<group>"; };
 		AB96224313514E2600744F63 /* bg_sendmessage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_sendmessage.png; sourceTree = "<group>"; };
 		AB96224413514E2600744F63 /* bg_sendmessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_sendmessage@2x.png"; sourceTree = "<group>"; };
+		ABCC44571352323E0068E5ED /* GrouponGoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrouponGoModel.h; sourceTree = "<group>"; };
+		ABCC44581352323E0068E5ED /* GrouponGoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrouponGoModel.m; sourceTree = "<group>"; };
+		ABCC4460135232900068E5ED /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		ABCC4461135232900068E5ED /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		ABCC4465135232BF0068E5ED /* GrouponGoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrouponGoRequest.h; sourceTree = "<group>"; };
+		ABCC4466135232BF0068E5ED /* GrouponGoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrouponGoRequest.m; sourceTree = "<group>"; };
+		ABCC45C613525D110068E5ED /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		ABCC45C713525D120068E5ED /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		ABCC45C813525D120068E5ED /* RKLMatchEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLMatchEnumerator.h; sourceTree = "<group>"; };
+		ABCC45C913525D120068E5ED /* RKLMatchEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLMatchEnumerator.m; sourceTree = "<group>"; };
+		ABCC45CA13525D120068E5ED /* IFTweetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFTweetLabel.m; sourceTree = "<group>"; };
+		ABCC45CB13525D120068E5ED /* IFTweetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFTweetLabel.h; sourceTree = "<group>"; };
+		ABCC45D513525DDE0068E5ED /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = usr/lib/libicucore.A.dylib; sourceTree = SDKROOT; };
+		ABCC45E713525FCE0068E5ED /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		ABCC45E813525FCE0068E5ED /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		ABCC45E913525FCE0068E5ED /* MessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
+		ABCC462A135265110068E5ED /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		ABF2A0CF1350AB3D00A2E73F /* Bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bg@2x.png"; path = "../Bg@2x.png"; sourceTree = "<group>"; };
 		ABF2A0F31350AC4400A2E73F /* bg_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_avatar.png; path = ../bg_avatar.png; sourceTree = "<group>"; };
 		ABF2A0F41350AC4500A2E73F /* bg_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_avatar@2x.png"; path = "../bg_avatar@2x.png"; sourceTree = "<group>"; };
@@ -509,6 +528,7 @@
 				AB80ACCA135022E1007AEB44 /* QuartzCore.framework in Frameworks */,
 				ABF2A5861350F2B000A2E73F /* CoreLocation.framework in Frameworks */,
 				AB9621A31351493F00744F63 /* CoreText.framework in Frameworks */,
+				ABCC45D613525DDE0068E5ED /* libicucore.A.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +538,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ABCC45E613525F560068E5ED /* Message */,
 				AB96206013512B1C00744F63 /* Root */,
 				1D3623240D0F684500981E51 /* GrouponGoAppDelegate.h */,
 				1D3623250D0F684500981E51 /* GrouponGoAppDelegate.m */,
@@ -542,6 +563,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				ABCC462A135265110068E5ED /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -592,6 +614,7 @@
 				AB80AB9D13501780007AEB44 /* CFNetwork.framework */,
 				ABF2A5851350F2B000A2E73F /* CoreLocation.framework */,
 				AB9621A21351493F00744F63 /* CoreText.framework */,
+				ABCC45D513525DDE0068E5ED /* libicucore.A.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -659,9 +682,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AB29E35F13522F8700A12DD6 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Object;
+			sourceTree = "<group>";
+		};
+		AB29E36013522F8E00A12DD6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABCC44571352323E0068E5ED /* GrouponGoModel.h */,
+				ABCC44581352323E0068E5ED /* GrouponGoModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		AB80A85213500573007AEB44 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				ABCC45C413525CF90068E5ED /* Data detecting UILabel */,
 				ABF2A29E1350B96800A2E73F /* PusherApp */,
 				ABF2A26B1350B7E100A2E73F /* JSON */,
 				AB80ACF113502584007AEB44 /* GrouponGo API */,
@@ -914,12 +954,12 @@
 		AB80ACF113502584007AEB44 /* GrouponGo API */ = {
 			isa = PBXGroup;
 			children = (
-				AB80AD12135029C2007AEB44 /* GrouponGoModel.h */,
-				AB80AD13135029C2007AEB44 /* GrouponGoModel.m */,
-				AB80AD1613502A39007AEB44 /* GrouponGoRequest.h */,
-				AB80AD1713502A39007AEB44 /* GrouponGoRequest.m */,
-				AB80AD1813502A57007AEB44 /* Constants.h */,
-				AB80AD1913502A57007AEB44 /* Constants.m */,
+				AB29E36013522F8E00A12DD6 /* Model */,
+				AB29E35F13522F8700A12DD6 /* Object */,
+				ABCC4460135232900068E5ED /* Constants.h */,
+				ABCC4461135232900068E5ED /* Constants.m */,
+				ABCC4465135232BF0068E5ED /* GrouponGoRequest.h */,
+				ABCC4466135232BF0068E5ED /* GrouponGoRequest.m */,
 			);
 			name = "GrouponGo API";
 			sourceTree = "<group>";
@@ -933,6 +973,37 @@
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
 			);
 			name = Root;
+			sourceTree = "<group>";
+		};
+		ABCC45C413525CF90068E5ED /* Data detecting UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				ABCC45C513525D110068E5ED /* RegexKitLite */,
+				ABCC45CA13525D120068E5ED /* IFTweetLabel.m */,
+				ABCC45CB13525D120068E5ED /* IFTweetLabel.h */,
+			);
+			name = "Data detecting UILabel";
+			sourceTree = "<group>";
+		};
+		ABCC45C513525D110068E5ED /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				ABCC45C613525D110068E5ED /* RegexKitLite.h */,
+				ABCC45C713525D120068E5ED /* RegexKitLite.m */,
+				ABCC45C813525D120068E5ED /* RKLMatchEnumerator.h */,
+				ABCC45C913525D120068E5ED /* RKLMatchEnumerator.m */,
+			);
+			path = RegexKitLite;
+			sourceTree = "<group>";
+		};
+		ABCC45E613525F560068E5ED /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				ABCC45E713525FCE0068E5ED /* MessageViewController.h */,
+				ABCC45E813525FCE0068E5ED /* MessageViewController.m */,
+				ABCC45E913525FCE0068E5ED /* MessageViewController.xib */,
+			);
+			name = Message;
 			sourceTree = "<group>";
 		};
 		ABF2A26B1350B7E100A2E73F /* JSON */ = {
@@ -1216,6 +1287,7 @@
 				AB96221613514D0B00744F63 /* input@2x.png in Resources */,
 				AB96224513514E2600744F63 /* bg_sendmessage.png in Resources */,
 				AB96224613514E2600744F63 /* bg_sendmessage@2x.png in Resources */,
+				ABCC45EB13525FCE0068E5ED /* MessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,7 +1345,6 @@
 				AB80AC6513501BE7007AEB44 /* CloseupViewController.m in Sources */,
 				AB80AC6613501BE7007AEB44 /* ImageCacheObject.m in Sources */,
 				AB80AC6713501BE7007AEB44 /* ImageCache.m in Sources */,
-				AB80AD1A13502A57007AEB44 /* Constants.m in Sources */,
 				ABF2A27D1350B7E100A2E73F /* NSObject+SBJSON.m in Sources */,
 				ABF2A27E1350B7E100A2E73F /* NSString+SBJSON.m in Sources */,
 				ABF2A2801350B7E100A2E73F /* SBJsonBase.m in Sources */,
@@ -1289,6 +1360,13 @@
 				ABF2A2BC1350B96900A2E73F /* PTPusherChannel.m in Sources */,
 				ABF2A2BD1350B96900A2E73F /* PTPusherEvent.m in Sources */,
 				ABF2A2BE1350B96900A2E73F /* ZTWebSocket.m in Sources */,
+				ABCC44591352323E0068E5ED /* GrouponGoModel.m in Sources */,
+				ABCC4462135232900068E5ED /* Constants.m in Sources */,
+				ABCC4467135232BF0068E5ED /* GrouponGoRequest.m in Sources */,
+				ABCC45CC13525D120068E5ED /* RegexKitLite.m in Sources */,
+				ABCC45CD13525D120068E5ED /* RKLMatchEnumerator.m in Sources */,
+				ABCC45CE13525D120068E5ED /* IFTweetLabel.m in Sources */,
+				ABCC45EA13525FCE0068E5ED /* MessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1337,6 +1415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/chat/iphone/GrouponGo/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1367,6 +1446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/chat/iphone/GrouponGo/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1396,12 +1476,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonah Grant (6WD77AZQNQ)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54A75D6E-32CD-4EB9-B5A0-6A1B140997DC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1410,13 +1494,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonah Grant (6WD77AZQNQ)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54A75D6E-32CD-4EB9-B5A0-6A1B140997DC";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

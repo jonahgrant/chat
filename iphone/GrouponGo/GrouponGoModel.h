@@ -1,9 +1,9 @@
 //
 //  GrouponGoModel.h
-//  Bellyflop
+//  GrouponGo
 //
-//  Created by Jonah Grant on 4/9/11.
-//  Copyright 2011 Lightbank. All rights reserved.
+//  Created by Jonah Grant on 4/10/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,5 +17,6 @@
 + (GrouponGoModel *)sharedModel;
 
 - (void)refreshChat;
+- (void)postWithBody:(NSString *)body;
 
 @end

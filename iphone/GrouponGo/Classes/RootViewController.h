@@ -14,6 +14,8 @@
 #import "PTPusherDelegate.h"
 #import "PTPusherChannelDelegate.h"
 #import "Three20/Three20.h"
+#import "GrouponGoModel.h"
+#import "IFTweetLabel.h"
 
 @class SA_OAuthTwitterEngine;  
 @class AsyncImageView;
@@ -44,6 +46,7 @@
 	PTPusher *pusher;
 	PTPusherChannel *eventsChannel;
 	AsyncImageView *avatar;
+	IFTweetLabel *dataLabel;
 }
 @property (nonatomic, retain) UITableView *table;
 @property (nonatomic, retain) IBOutlet UILabel *name;
@@ -58,6 +61,7 @@
 @property (nonatomic, retain) PTPusher *pusher;
 @property (nonatomic, readonly) PTPusherChannel *eventsChannel;
 @property (nonatomic, retain) NSMutableArray *attributedMessages;
+@property (nonatomic, retain) IFTweetLabel *dataLabel;
 
 - (void)sendMessage;
 - (void)refresh;

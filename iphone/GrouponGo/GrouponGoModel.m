@@ -1,12 +1,14 @@
 //
 //  GrouponGoModel.m
-//  Bellyflop
+//  GrouponGo
 //
-//  Created by Jonah Grant on 4/9/11.
-//  Copyright 2011 Lightbank. All rights reserved.
+//  Created by Jonah Grant on 4/10/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "GrouponGoModel.h"
+#import "Constants.h"
+#import "GrouponGoRequest.h"
 
 @interface GrouponGoModel (PrivateMethods)
 
@@ -32,14 +34,53 @@ static GrouponGoModel *sharedModel = nil;
 - (id)init {
     self = [super init];
     if (self) {
-
+		
     }
     return self;
 }
 
 - (void)refreshChat
 {
-	GrouponGoRequest *request = [GrouponGoRequest requestWithURL:@"http://go.groupon.com/"]
+	GrouponGoRequest *request = [GrouponGoRequest requestWithURL:[NSURL URLWithString:@"http://go.groupon.com/posts"]];
+	[request setDelegate:self];
+	[request setRequestType:GrouponGoRequestTypeGetPosts];
+	[request startAsynchronous];
 }
 
+- (void)postWithBody:(NSString *)body
+{
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	GrouponGoRequest *request = [GrouponGoRequest requestWithURL:[NSURL URLWithString:@"http://go.groupon.com/posts"]];
+	[request setPostValue:[prefs stringForKey:@"user_id"] forKey:@"user_id"];
+	[request setPostValue:body forKey:@"message"];
+	
+	[request setDelegate:self];
+	[request setRequestType:GrouponGoRequestTypePost];
+	[request startAsynchronous];
+	
+	NSLog(@"posted %@", body);
+}
+
+#pragma mark Delegate methods
+
+- (BOOL) isValidDelegateForSelector:(SEL)selector {
+	return ((delegate != nil) && [delegate respondsToSelector:selector]);
+}
+
+- (void)requestFinished:(GrouponGoRequest *)request {
+	NSLog(@"request feedback: %@", [request responseString]);
+	if ([self isValidDelegateForSelector:@selector(requestFinished:)])
+		[delegate requestFinished:request];
+	
+	switch ([request requestType]) {
+		case GrouponGoRequestTypePost:
+			NSLog(@"posting successful");
+		break;
+		case GrouponGoRequestTypeGetPosts:
+			NSLog(@"Getting posts successful");
+			NSLog(@"GrouponGoRequestTypeGetPosts: %@", [request responseString]);
+		break;
+
+	}
+}
 @end
