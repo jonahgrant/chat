@@ -1,262 +1,0 @@
-TGrouponGo
-v7
-r0
-t324011143.971885
-cCheck dependencies
-cProcessInfoPlistFile /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/Info.plist GrouponGo-Info.plist
-cCompileXIB /Users/jonahgrant/Desktop/chat_/GrouponGo/MainWindow.xib
-cCompileXIB /Users/jonahgrant/Desktop/chat_/GrouponGo/RootViewController.xib
-cProcessPCH /var/folders/qZ/qZxnUPSOF5S8yEbSxrhL1U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GrouponGo_Prefix-ggyekrifjrlebifgauvbxafdufji/GrouponGo_Prefix.pch.gch GrouponGo_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/main.o /Users/jonahgrant/Desktop/chat_/GrouponGo/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/GrouponGoAppDelegate.o /Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/GrouponGoAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/RootViewController.o /Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cLd /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo normal i386
-cGenerateDSYMFile /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app.dSYM /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo
-cTouch /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
-c000000004D5C9B4E0000000000000110
-t1297914702
-s272
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004D54CFFA00000000002999B0
-t1297403898
-s2726320
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004D54CFE5000000000029DA70
-t1297403877
-s2742896
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004D54CFB80000000000001466
-t1297403832
-s5222
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004D5615B40000000000000AA1
-t1297487284
-s2721
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004D5616030000000000766870
-t1297487363
-s7759984
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/Availability.h
-c000000004D4F7A2B0000000000001B19
-t1297054251
-s6937
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/GrouponGoAppDelegate.h
-c000000004D9FCCE600000000000001D7
-t1302318310
-s471
-i<UIKit/UIKit.h>
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/GrouponGoAppDelegate.m
-c000000004D9FCD040000000000000A72
-t1302318340
-s2674
-i"GrouponGoAppDelegate.h"
-i"RootViewController.h"
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/RootViewController.h
-c000000004D9FCCE600000000000000EB
-t1302318310
-s235
-i<UIKit/UIKit.h>
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/RootViewController.m
-c000000004D9FCCE600000000000010C3
-t1302318310
-s4291
-i"RootViewController.h"
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/GrouponGo_Prefix.pch
-c000000004D9FCCE60000000000000144
-t1302318310
-s324
-i<Availability.h>
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/MainWindow.xib
-c000000004D9FCCE60000000000005FFC
-t1302318310
-s24572
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/RootViewController.xib
-c000000004D9FCCE60000000000004454
-t1302318310
-s17492
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app
-t1302318343
-s238
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app.dSYM
-t1302318343
-s102
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo
-t1302318343
-s18144
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/Info.plist
-t1302318340
-s599
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/MainWindow.nib
-t1302318341
-s2458
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/PkgInfo
-t1302318340
-s8
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/RootViewController.nib
-t1302318341
-s1518
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/GrouponGo.LinkFileList
-c000000004D9FCD0400000000000001A1
-t1302318340
-s417
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/GrouponGoAppDelegate.o
-t1302318343
-s53956
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/RootViewController.o
-t1302318343
-s41612
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/main.o
-t1302318343
-s6316
-
-N/Users/jonahgrant/Desktop/chat_/GrouponGo/main.m
-c000000004D9FCCE60000000000000169
-t1302318310
-s361
-i<UIKit/UIKit.h>
-
-N/var/folders/qZ/qZxnUPSOF5S8yEbSxrhL1U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GrouponGo_Prefix-ggyekrifjrlebifgauvbxafdufji/GrouponGo_Prefix.pch.gch
-t1302318343
-s15814064
-
-NGrouponGo-Info.plist
-c000000004D9FCCE6000000000000038D
-t1302318310
-s909
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies324011140#324011140#0(0"0(0#1#0"8648619936#0"0#
-
-CCompileC build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/GrouponGoAppDelegate.o /Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/GrouponGoAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s324011143.276895
-e324011143.471102
-r1
-xCompileC
-xbuild/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/GrouponGoAppDelegate.o
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/GrouponGoAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@80"Compile /Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/GrouponGoAppDelegate.m324011143#324011143#0(0"0(0#0#72"/Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/GrouponGoAppDelegate.m8614419840#2027"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-generated-files.hmap -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-own-target-headers.hmap -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-all-target-headers.hmap -iquote /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-project-headers.hmap -F/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/include -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/DerivedSources/i386 -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/DerivedSources -include /var/folders/qZ/qZxnUPSOF5S8yEbSxrhL1U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GrouponGo_Prefix-ggyekrifjrlebifgauvbxafdufji/GrouponGo_Prefix.pch -c /Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/GrouponGoAppDelegate.m -o /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/GrouponGoAppDelegate.o0#
-
-CCompileC build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/RootViewController.o /Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/RootViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s324011143.453425
-e324011143.521067
-r1
-xCompileC
-xbuild/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/RootViewController.o
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/RootViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@78"Compile /Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/RootViewController.m324011143#324011143#0(0"0(0#0#70"/Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/RootViewController.m8759776160#2023"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-generated-files.hmap -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-own-target-headers.hmap -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-all-target-headers.hmap -iquote /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-project-headers.hmap -F/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/include -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/DerivedSources/i386 -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/DerivedSources -include /var/folders/qZ/qZxnUPSOF5S8yEbSxrhL1U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GrouponGo_Prefix-ggyekrifjrlebifgauvbxafdufji/GrouponGo_Prefix.pch -c /Users/jonahgrant/Desktop/chat_/GrouponGo/Classes/RootViewController.m -o /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/RootViewController.o0#
-
-CCompileC build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/main.o /Users/jonahgrant/Desktop/chat_/GrouponGo/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s324011143.119557
-e324011143.453334
-r1
-xCompileC
-xbuild/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/main.o
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@56"Compile /Users/jonahgrant/Desktop/chat_/GrouponGo/main.m324011143#324011143#0(0"0(0#0#48"/Users/jonahgrant/Desktop/chat_/GrouponGo/main.m8629309728#1987"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-generated-files.hmap -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-own-target-headers.hmap -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-all-target-headers.hmap -iquote /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-project-headers.hmap -F/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/include -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/DerivedSources/i386 -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/DerivedSources -include /var/folders/qZ/qZxnUPSOF5S8yEbSxrhL1U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GrouponGo_Prefix-ggyekrifjrlebifgauvbxafdufji/GrouponGo_Prefix.pch -c /Users/jonahgrant/Desktop/chat_/GrouponGo/main.m -o /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/main.o0#
-
-CCompileXIB /Users/jonahgrant/Desktop/chat_/GrouponGo/MainWindow.xib
-s324011140.511196
-e324011141.227704
-r1
-xCompileXIB
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/MainWindow.xib
-lSLF07#2@25"CompileXIB MainWindow.xib324011140#324011141#0(0"0(0#0#56"/Users/jonahgrant/Desktop/chat_/GrouponGo/MainWindow.xib8672553600#581"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/MainWindow.nib /Users/jonahgrant/Desktop/chat_/GrouponGo/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
-
-CCompileXIB /Users/jonahgrant/Desktop/chat_/GrouponGo/RootViewController.xib
-s324011140.560079
-e324011141.204532
-r1
-xCompileXIB
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/RootViewController.xib
-lSLF07#2@33"CompileXIB RootViewController.xib324011140#324011141#0(0"0(0#0#64"/Users/jonahgrant/Desktop/chat_/GrouponGo/RootViewController.xib8775380320#597"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/RootViewController.nib /Users/jonahgrant/Desktop/chat_/GrouponGo/RootViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
-
-CGenerateDSYMFile /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app.dSYM /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo
-s324011143.854057
-e324011143.934290
-r1
-xGenerateDSYMFile
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app.dSYM
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo
-lSLF07#2@115"GenerateDSYMFile build/Debug-iphonesimulator/GrouponGo.app.dSYM build/Debug-iphonesimulator/GrouponGo.app/GrouponGo324011143#324011143#0(0"0(0#0#93"/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo8664301472#398"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo -o /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app.dSYM0#
-
-CLd /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo normal i386
-s324011143.521157
-e324011143.853954
-r1
-xLd
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo
-xnormal
-xi386
-lSLF07#2@98"Link /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo324011143#324011143#0(0"0(0#0#0"8694486176#925"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator -F/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator -filelist /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/Objects-normal/i386/GrouponGo.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/GrouponGo0#
-
-CProcessInfoPlistFile /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/Info.plist GrouponGo-Info.plist
-s324011140.493975
-e324011140.511091
-r1
-xProcessInfoPlistFile
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/Info.plist
-xGrouponGo-Info.plist
-lSLF07#2@28"Process GrouponGo-Info.plist324011140#324011140#0(0"0(0#0#62"/Users/jonahgrant/Desktop/chat_/GrouponGo/GrouponGo-Info.plist8619696768#494"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility GrouponGo-Info.plist -genpkginfo /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app/Info.plist0#
-
-CProcessPCH /var/folders/qZ/qZxnUPSOF5S8yEbSxrhL1U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GrouponGo_Prefix-ggyekrifjrlebifgauvbxafdufji/GrouponGo_Prefix.pch.gch GrouponGo_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s324011141.227806
-e324011143.119419
-r1
-xProcessPCH
-x/var/folders/qZ/qZxnUPSOF5S8yEbSxrhL1U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GrouponGo_Prefix-ggyekrifjrlebifgauvbxafdufji/GrouponGo_Prefix.pch.gch
-xGrouponGo_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@31"Precompile GrouponGo_Prefix.pch324011141#324011143#0(0"0(0#0#62"/Users/jonahgrant/Desktop/chat_/GrouponGo/GrouponGo_Prefix.pch8691472352#1874"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-generated-files.hmap -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-own-target-headers.hmap -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-all-target-headers.hmap -iquote /Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/GrouponGo-project-headers.hmap -F/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/include -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/DerivedSources/i386 -I/Users/jonahgrant/Desktop/chat_/GrouponGo/build/GrouponGo.build/Debug-iphonesimulator/GrouponGo.build/DerivedSources -c /Users/jonahgrant/Desktop/chat_/GrouponGo/GrouponGo_Prefix.pch -o /var/folders/qZ/qZxnUPSOF5S8yEbSxrhL1U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GrouponGo_Prefix-ggyekrifjrlebifgauvbxafdufji/GrouponGo_Prefix.pch.gch0#
-
-CTouch /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app
-s324011143.934371
-e324011143.971837
-r1
-xTouch
-x/Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app
-lSLF07#2@89"Touch /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app324011143#324011143#0(0"0(0#0#0"8774180352#286"    cd /Users/jonahgrant/Desktop/chat_/GrouponGo    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/jonahgrant/Desktop/chat_/GrouponGo/build/Debug-iphonesimulator/GrouponGo.app0#
-

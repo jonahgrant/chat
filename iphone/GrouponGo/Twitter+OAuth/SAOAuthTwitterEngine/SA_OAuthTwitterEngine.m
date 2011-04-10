@@ -27,7 +27,7 @@
 - (void) setAccessToken: (OAServiceTicket *) ticket withData: (NSData *) data;
 
 - (NSString *) extractUsernameFromHTTPBody:(NSString *)body;
-
+- (NSString *) extractUserIDFromHTTPBody:(NSString *)ID;
 // MGTwitterEngine impliments this
 // include it here just so that we
 // can use this private method
@@ -87,6 +87,7 @@
 	
 	//first, check for cached creds
 	NSString					*accessTokenString = [_delegate respondsToSelector: @selector(cachedTwitterOAuthDataForUsername:)] ? [(id) _delegate cachedTwitterOAuthDataForUsername: self.username] : @"";
+	NSString	*userID = [_delegate respondsToSelector: @selector(cachedTwitterOAuthDataForID:)] ? [(id) _delegate cachedTwitterOAuthDataForID: self.username] : @"";
 
 	if (accessTokenString.length) {				
 		[_accessToken release];
@@ -202,6 +203,7 @@
 	if (username.length > 0) {
 		[self setUsername:username password:nil];
 		if ([_delegate respondsToSelector: @selector(storeCachedTwitterOAuthData:forUsername:)]) [(id) _delegate storeCachedTwitterOAuthData: dataString forUsername: username];
+		
 	}
 	
 	[_accessToken release];
@@ -231,6 +233,26 @@
 	return nil;
 }
 
+- (NSString *) extractUserIDFromHTTPBody:(NSString *)ID
+{
+	if (!ID) return nil;
+	
+	NSArray	*tuples = [ID componentsSeparatedByString: @"&"];
+	if (tuples.count < 1) return nil;
+	
+	for (NSString *tuple in tuples) {
+		NSArray *keyValueArray = [tuple componentsSeparatedByString: @"="];
+		
+		if (keyValueArray.count == 2) {
+			NSString				*key = [keyValueArray objectAtIndex: 0];
+			NSString				*value = [keyValueArray objectAtIndex: 1];
+			
+			if ([key isEqualToString:@"user_id"]) return value;
+		}
+	}
+	
+	return nil;	
+}
 //- (NSURL *)extractAvatarFromHTTPBody:(NSString *)
 
 -(void)getImageA 

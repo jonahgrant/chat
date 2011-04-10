@@ -11,8 +11,6 @@
 #import "PTPusher.h"
 #import "PTPusherEvent.h"
 #import "PTPusherChannel.h"
-#import "NewEventViewController.h"
-#import "CLController.h"
 
 #define kOAuthConsumerKey        @"StQR6yZ9xgRkqFHI8TO1w"
 #define kOAuthConsumerSecret    @"byWDt5n6Z3RqHn9IcwPSGiABX0fiHdfqFmflwfLA"
@@ -22,10 +20,12 @@
 
 
 @implementation UINavigationBar (CustomImage)
+
 - (void)drawRect:(CGRect)rect {
     UIImage *image = [UIImage imageNamed:@"navbar.png"];
     [image drawInRect:rect];
 }
+
 @end
 
 @implementation RootViewController
@@ -40,7 +40,7 @@
 @synthesize messages;
 @synthesize pusher;
 @synthesize eventsChannel;
-@synthesize locController;
+@synthesize attributedMessages;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -50,15 +50,14 @@
 	
 	if (messages == nil) {
 		messages = [[NSMutableArray alloc] init];
+		attributedMessages = [[NSMutableArray alloc] init];
 	}
 	if (eventsChannel == nil) {
 		eventsChannel = [PTPusher newChannel:@"groupon_go"];
 		eventsChannel.delegate = self;
 	}
 	[eventsChannel startListeningForEvents];
-	
-	//messages = [[NSMutableArray alloc] initWithObjects:@"jonahgrant", @"groupon", @"to_morrow", @"joshpuckett", @"marekdzik", nil];
-	
+		
 	pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
 								   channel:@"groupon_go"];
 	pusher.delegate = self;
@@ -66,31 +65,11 @@
 	[PTPusher setKey:@"534d197146cf867179ee"];
 	[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
 	[PTPusher setAppID:@"3638"];
-	
-	//pusher.reconnect = YES;
-	
+		
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
 	[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
 	
 	table.showsVerticalScrollIndicator = NO;
-	
-	locController = [[CLController alloc] init];
-	locController.delegate = self;
-	[locController.locationManager startUpdatingLocation];
-	
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-	[locController.locationManager stopUpdatingLocation];
-	
-	CLLocationCoordinate2D coord;
-	coord.longitude = newLocation.coordinate.longitude;
-	coord.latitude = newLocation.coordinate.latitude;
-	
-	NSLog(@"lat: %f", coord.latitude);
-	NSLog(@"longt: %f", coord.longitude);
-	
 }
 
 - (void)handlePusherEvent:(NSNotification *)note;
@@ -100,7 +79,6 @@
 
 - (void)handleEvent:(PTPusherEvent *)event;
 {
-	//PTPusherEvent *event = note.object;
 	NSLog(@"Received event %@ with data %@", event.name, event.data);
 }
 
@@ -110,6 +88,7 @@
 	[alertView show];
 	[alertView release];
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
@@ -128,14 +107,14 @@
 	textFieldBackground = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height - 40.0, self.view.frame.size.width, 40.0)];
 	textFieldBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 	UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, textFieldBackground.frame.size.width, textFieldBackground.frame.size.height)];
-	[bg setImage:[[UIImage imageNamed:@"EntryBackground.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0]];
+	[bg setImage:[[UIImage imageNamed:@"bg_sendmessage.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0]];
 	[textFieldBackground addSubview:bg];
 	[self.view addSubview:textFieldBackground];
 	
-	textField = [[SSTextField alloc] initWithFrame:CGRectMake(6.0, 376, self.view.frame.size.width - 75.0, 37.0)];
+	textField = [[SSTextField alloc] initWithFrame:CGRectMake(6.0, 381.5, self.view.frame.size.width - 75.0, 29.0)];
 	textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	textField.background = [[UIImage imageNamed:@"SSMessagesViewControllerTextFieldBackground.png"] stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	textField.backgroundColor = [UIColor whiteColor];
+	textField.background = [[UIImage imageNamed:@"input.png"] stretchableImageWithLeftCapWidth:13 topCapHeight:0];
+	textField.backgroundColor = [UIColor clearColor];
 	textField.autocorrectionType = UITextAutocorrectionTypeNo;
 	textField.delegate = self;
 	textField.placeholder = @"Enter your message...";
@@ -157,17 +136,6 @@
 	[send setTitleShadowColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateNormal];
 	[self.view addSubview:send];
 	
-	//NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([messages count] - 1) inSection:0];
-	//[table scrollToRowAtIndexPath:scrollIndexPath
-	//			 atScrollPosition:UITableViewScrollPositionTop 
-	//					 animated:YES];
-	
-	/*NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
-								[self methodSignatureForSelector: @selector(refresh)]];
-	[invocation setTarget:self];
-	[invocation setSelector:@selector(refresh)];
-	timer = [NSTimer scheduledTimerWithTimeInterval:5.0 invocation:invocation repeats:YES];*/
-	
 }
 
 - (void)viewDidAppear: (BOOL)animated {
@@ -186,7 +154,6 @@
 		    [self presentModalViewController:controller animated:YES];
 	    }
 	}
-	
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -234,7 +201,15 @@
 	if ([event.name isEqualToString:@"new_post"]) {
 		[table beginUpdates];
 		[messages insertObject:event atIndex:[messages count]];
-		NSLog(@"added the cell %@", event.name);
+		
+		/*NSString *html = [NSString stringWithContentsOfFile:[event.data valueForKey:@"body"] encoding:NSUTF8StringEncoding error:NULL];
+		NSData *data = [[event.data valueForKey:@"body"] dataUsingEncoding:NSUTF8StringEncoding];
+		NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:1.3], NSTextSizeMultiplierDocumentOption, 
+								 @"Verdana", DTDefaultFontFamily,  @"purple", DTDefaultLinkColor, nil]; // @"green",DTDefaultTextColor,
+		NSAttributedString *string = [[NSAttributedString alloc] initWithHTML:data options:options documentAttributes:NULL];
+		[attributedMessages insertObject:string atIndex:[attributedMessages count]];
+		 */
+		
 		NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([messages count] - 1) inSection:0];
 		[table insertRowsAtIndexPaths:[NSArray arrayWithObject:scrollIndexPath] withRowAnimation:UITableViewRowAnimationBottom];
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2e9), dispatch_get_main_queue(), ^{
@@ -284,14 +259,6 @@
 	[textField resignFirstResponder];
 }
 
-- (void)presentNewEventScreen;
-{
-	NewEventViewController *newEventController = [[NewEventViewController alloc] init];
-	newEventController.delegate = self;
-	[self presentModalViewController:newEventController animated:YES];
-	[newEventController release];
-}
-
 - (void)sendEventWithMessage:(NSString *)_message;
 {
 	NSDictionary *payload = [NSDictionary dictionaryWithObjectsAndKeys:_message, @"title", @"Sent from libPusher", @"description", nil];
@@ -331,8 +298,8 @@
 	table.contentInset = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2 + 5, 0.0);
 	table.scrollIndicatorInsets = table.contentInset;
 	textFieldBackground.frame = CGRectMake(0.0, 160.0, self.view.frame.size.width, 40.0);
-	textField.frame = CGRectMake(6.0, 160.0, self.view.frame.size.width - 75.0, 37.0);
-	send.frame = CGRectMake(256.0, 168.0, 59.0, 27.0);
+	textField.frame = CGRectMake(6.0, 165.0, self.view.frame.size.width - 75.0, 29.0);
+	send.frame = CGRectMake(256.0, 165.0, 59.0, 27.0);
 	[UIView commitAnimations];
 
 	if ([messages count] > 0) {
@@ -345,6 +312,7 @@
 {
 	return YES;	
 }
+
 
 - (BOOL)textField:(UITextField *)_textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -362,7 +330,7 @@
 	table.scrollIndicatorInsets = UIEdgeInsetsZero;
 	textFieldBackground.frame = CGRectMake(0.0, self.view.frame.size.height - 40.0, self.view.frame.size.width, 40.0);
 	textField.frame = CGRectMake(6.0, 376, self.view.frame.size.width - 75.0, 37.0);
-	send.frame = CGRectMake(self.view.frame.size.width - 65.0, 382, 59.0, 27.0);
+	send.frame = CGRectMake(self.view.frame.size.width - 65.0, 383, 59.0, 27.0);
 	[send setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.4] forState:UIControlStateNormal];
 	[UIView commitAnimations];
 }
@@ -376,12 +344,18 @@
 	[defaults setObject:username forKey:@"username"];
 	[defaults synchronize];
 	
+	
+	/*
+	 
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Authenticated"
-													message:[NSString stringWithFormat:@"username: %@ data: %@", username, data] 
+													message:[NSString stringWithFormat:@"id: %@", [data JSONValue]] 
 												   delegate:nil 
 										  cancelButtonTitle:@"Close" 
 										  otherButtonTitles:nil];
 	[alert show];
+	
+	*/
+	 
 }
 
 - (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username {
@@ -392,29 +366,17 @@
 #pragma mark -
 #pragma mark Table view data source
 
-// Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-
-// Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [messages count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-	/*
-	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
-	NSString *txt = [event.data valueForKey:@"body"];
-	CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-	CGSize size = [txt sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-	CGFloat height = MAX(size.height, 44.0f);
-	
-	return height + (CELL_CONTENT_MARGIN * 2);
-	*/
-	return 90;
+	return 85;
 }
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -428,35 +390,29 @@
         self.tableCell = nil;
 	}
 	
-	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10,cell.bounds.size.height, 300, 2)];
+	/*
+	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, message.frame.size.height);
+	messageView = [[UITextView alloc] initWithFrame:frame];
+	messageView.editable = NO;
+	messageView.backgroundColor = [UIColor clearColor];
+	messageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	[cell addSubview:messageView];
+	 */
+	
+	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
+		
+	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 79, 300, 2)];
 	lineView.tag = 101;
 	[lineView setLineColor:[UIColor colorWithRed:186.0/255.0 green:185.0/255.0 blue:185.0/255.0 alpha:1.0]];
 	[cell addSubview:lineView];
 	
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	
-	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	//name.text = [prefs stringForKey:@"username"];
-	//name.text = [messages objectAtIndex:indexPath.row];
-	//message.text = [NSString stringWithFormat:@"Cell number %i", indexPath.row];
-		
-	//if ([messages objectAtIndex:indexPath.row] == [prefs stringForKey:@"username"]) {
-	//	name.textAlignment = UITextAlignmentRight;
-	//}
-	
-	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
+
 	message.text = [event.data valueForKey:@"body"];
 	name.text = [event.data valueForKey:@"name"];
 
-	
 	[(AsyncImageView *)[cell.contentView viewWithTag:104] setBackgroundColor:[UIColor clearColor]];
-	//[[(AsyncImageView *)[cell.contentView viewWithTag:104] layer] setBorderColor:[UIColor whiteColor].CGColor];
-	//[[(AsyncImageView *)[cell.contentView viewWithTag:104] layer] setBorderWidth:2.0f];
-	//[(AsyncImageView *)[cell.contentView viewWithTag:104] loadImageFromURL:
-	// [NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com/1/users/profile_image/%@.json?size=bigger", [prefs stringForKey:@"username"]]]];
-
-	[(AsyncImageView *)[cell.contentView viewWithTag:104] loadImageFromURL:
-	 [NSURL URLWithString:[event.data valueForKey:@"profile_image_url"]]];
+	[(AsyncImageView *)[cell.contentView viewWithTag:104] loadImageFromURL:[NSURL URLWithString:[event.data valueForKey:@"profile_image_url"]]];
 
     return cell;
 }
@@ -469,8 +425,7 @@
 	
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Groupon Go"
-													message:[NSString stringWithFormat:@"%@",
-															 [event.data valueForKey:@"body"]]
+													message:[NSString stringWithFormat:@"%@", [event.data valueForKey:@"body"]]
 												   delegate:nil 
 										  cancelButtonTitle:@"Close"
 										  otherButtonTitles:nil];
@@ -482,17 +437,11 @@
 #pragma mark Memory management
 
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
 }
-
 
 - (void)dealloc {
 	[_engine release];

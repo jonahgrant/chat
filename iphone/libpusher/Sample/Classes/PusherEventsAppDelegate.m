@@ -13,7 +13,6 @@
 
 // this is not included in the source
 // you must create this yourself and define PUSHER_API_KEY in it
-#import "Constants.h" 
 
 @implementation PusherEventsAppDelegate
 
@@ -23,12 +22,12 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application 
 {    
-  [PTPusher setKey:PUSHER_API_KEY];
-  [PTPusher setSecret:PUSHER_API_SECRET];
-  [PTPusher setAppID:PUSHER_APP_ID];
+	[PTPusher setKey:@"534d197146cf867179ee"];
+	[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
+	[PTPusher setAppID:@"3638"];
   
   
-  pusher = [[PTPusher alloc] initWithKey:PUSHER_API_KEY channel:@"test_channel"];
+  pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" channel:@"groupon_go"];
   pusher.delegate = self;
   
   // uncomment to allow reconnections
