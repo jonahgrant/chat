@@ -72,7 +72,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.title = @"Back";
+	//self.title = @"Back";
 	
 	if (messages == nil) {
 		messages = [[NSMutableArray alloc] init];
@@ -86,7 +86,7 @@
 		eventsChannel = [PTPusher newChannel:@"groupon_go_production"];
 		eventsChannel.delegate = self;
 	}
-	[eventsChannel startListeningForEvents];
+	//[eventsChannel startListeningForEvents];
 		
 	pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
 								   channel:@"groupon_go_production"];
@@ -134,7 +134,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	
+	[eventsChannel startListeningForEvents];
+
 	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 	NSLog(@"id is: %@", [prefs stringForKey:@"user_id"]);
 	
@@ -452,7 +453,6 @@
 	[cell addSubview:htmlLabel];*/
 	
 	
-	
 	self.dataLabel = [[[IFTweetLabel alloc] initWithFrame:frame] autorelease];
 	[self.dataLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:16.0f]];
 	[self.dataLabel setTextColor:[UIColor blackColor]];
@@ -463,12 +463,15 @@
 	
 	NSRange stringRange = {0, MIN([[event.data valueForKey:@"body"] length], 50)};
 	
-	if ([[event.data valueForKey:@"body"] length] > 50) {
-		NSString *shortBody = [[event.data valueForKey:@"body"] substringWithRange:stringRange];
+	NSString *noSpaces = [[event.data valueForKey:@"body"] stringByReplacingOccurrencesOfString:@"<mark>" withString:@""];
+	noSpaces = [noSpaces stringByReplacingOccurrencesOfString:@"</mark>" withString:@""];
+
+	if ([noSpaces length] > 50) {
+		NSString *shortBody = [noSpaces substringWithRange:stringRange];
 		[self.dataLabel setText:[NSString stringWithFormat:@"%@...", shortBody]];
 	}
 	else {
-		[self.dataLabel setText:[event.data valueForKey:@"body"]];
+		[self.dataLabel setText:noSpaces];
 	}	
 	
 	[cell addSubview:self.dataLabel];
@@ -503,9 +506,9 @@
 	
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
 	
-	MessageViewController *vc = [[MessageViewController alloc] initWithNibName:@"MessageViewController" bundle:nil];
+	/*MessageViewController *vc = [[MessageViewController alloc] initWithNibName:@"MessageViewController" bundle:nil];
 	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];
+	[vc release];*/
 }
 
 

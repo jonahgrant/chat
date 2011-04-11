@@ -99,6 +99,8 @@
 		ABCC45D613525DDE0068E5ED /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCC45D513525DDE0068E5ED /* libicucore.A.dylib */; };
 		ABCC45EA13525FCE0068E5ED /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45E813525FCE0068E5ED /* MessageViewController.m */; };
 		ABCC45EB13525FCE0068E5ED /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABCC45E913525FCE0068E5ED /* MessageViewController.xib */; };
+		ABCC4701135274FD0068E5ED /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC46FF135274FD0068E5ED /* UserViewController.m */; };
+		ABCC4702135274FD0068E5ED /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABCC4700135274FD0068E5ED /* UserViewController.xib */; };
 		ABF2A0D01350AB3D00A2E73F /* Bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF2A0CF1350AB3D00A2E73F /* Bg@2x.png */; };
 		ABF2A0F51350AC4500A2E73F /* bg_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF2A0F31350AC4400A2E73F /* bg_avatar.png */; };
 		ABF2A0F61350AC4500A2E73F /* bg_avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF2A0F41350AC4500A2E73F /* bg_avatar@2x.png */; };
@@ -452,6 +454,9 @@
 		ABCC45E813525FCE0068E5ED /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		ABCC45E913525FCE0068E5ED /* MessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
 		ABCC462A135265110068E5ED /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		ABCC46FE135274FD0068E5ED /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		ABCC46FF135274FD0068E5ED /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		ABCC4700135274FD0068E5ED /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		ABF2A0CF1350AB3D00A2E73F /* Bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bg@2x.png"; path = "../Bg@2x.png"; sourceTree = "<group>"; };
 		ABF2A0F31350AC4400A2E73F /* bg_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_avatar.png; path = ../bg_avatar.png; sourceTree = "<group>"; };
 		ABF2A0F41350AC4500A2E73F /* bg_avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_avatar@2x.png"; path = "../bg_avatar@2x.png"; sourceTree = "<group>"; };
@@ -538,6 +543,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ABCC46FD135274A20068E5ED /* User */,
 				ABCC45E613525F560068E5ED /* Message */,
 				AB96206013512B1C00744F63 /* Root */,
 				1D3623240D0F684500981E51 /* GrouponGoAppDelegate.h */,
@@ -1006,6 +1012,16 @@
 			name = Message;
 			sourceTree = "<group>";
 		};
+		ABCC46FD135274A20068E5ED /* User */ = {
+			isa = PBXGroup;
+			children = (
+				ABCC46FE135274FD0068E5ED /* UserViewController.h */,
+				ABCC46FF135274FD0068E5ED /* UserViewController.m */,
+				ABCC4700135274FD0068E5ED /* UserViewController.xib */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		ABF2A26B1350B7E100A2E73F /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -1288,6 +1304,7 @@
 				AB96224513514E2600744F63 /* bg_sendmessage.png in Resources */,
 				AB96224613514E2600744F63 /* bg_sendmessage@2x.png in Resources */,
 				ABCC45EB13525FCE0068E5ED /* MessageViewController.xib in Resources */,
+				ABCC4702135274FD0068E5ED /* UserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1367,6 +1384,7 @@
 				ABCC45CD13525D120068E5ED /* RKLMatchEnumerator.m in Sources */,
 				ABCC45CE13525D120068E5ED /* IFTweetLabel.m in Sources */,
 				ABCC45EA13525FCE0068E5ED /* MessageViewController.m in Sources */,
+				ABCC4701135274FD0068E5ED /* UserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1478,14 +1496,14 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonah Grant (6WD77AZQNQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jonah Grant";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54A75D6E-32CD-4EB9-B5A0-6A1B140997DC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ADDB17EE-D9A1-46B7-BC57-C309C80BD047";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1496,7 +1514,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonah Grant (6WD77AZQNQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jonah Grant";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1504,7 +1522,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54A75D6E-32CD-4EB9-B5A0-6A1B140997DC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ADDB17EE-D9A1-46B7-BC57-C309C80BD047";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

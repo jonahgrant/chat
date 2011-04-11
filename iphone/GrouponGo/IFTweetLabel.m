@@ -78,7 +78,7 @@ static NSArray *expressions = nil;
 	}
 	else
 	{
-		button = [UIButton buttonWithType:UIButtonTypeRoundedRect]; // autoreleased
+		button = [UIButton buttonWithType:UIButtonTypeCustom]; // autoreleased
 	}
 	[button setFrame:frame];
 	[button setFont:self.label.font];
@@ -355,7 +355,7 @@ static NSArray *expressions = nil;
 #if DRAW_DEBUG_FRAMES
 - (void)drawRect:(CGRect)rect
 {
-	[[UIColor whiteColor] set];
+	[[UIColor clearColor] set];
 	UIRectFrame([self bounds]);
 
 	UIView *view;
