@@ -1496,14 +1496,14 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jonah Grant";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonah Grant (6WD77AZQNQ)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ADDB17EE-D9A1-46B7-BC57-C309C80BD047";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54A75D6E-32CD-4EB9-B5A0-6A1B140997DC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1514,7 +1514,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jonah Grant";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonah Grant (6WD77AZQNQ)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1522,7 +1522,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ADDB17EE-D9A1-46B7-BC57-C309C80BD047";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54A75D6E-32CD-4EB9-B5A0-6A1B140997DC";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

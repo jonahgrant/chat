@@ -47,7 +47,7 @@ NSString *const PTPusherEventReceivedNotification = @"PTPusherEventReceivedNotif
     host = @"ws.pusherapp.com";
     port = 80;
     delegate = nil;
-    reconnect = NO;
+    reconnect = YES;
     
     socket = [[ZTWebSocket alloc] initWithURLString:self.URLString delegate:self];
     [self connect];

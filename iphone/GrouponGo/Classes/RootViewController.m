@@ -65,6 +65,7 @@
 @synthesize eventsChannel;
 @synthesize attributedMessages;
 @synthesize dataLabel;
+@synthesize time;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -78,19 +79,20 @@
 		messages = [[NSMutableArray alloc] init];
 		attributedMessages = [[NSMutableArray alloc] init];
 		
-		GrouponGoModel *model = [GrouponGoModel sharedModel];
-		[model setDelegate:self];
-		[model refreshChat];
+		//GrouponGoModel *model = [GrouponGoModel sharedModel];
+		//[model setDelegate:self];
+		//[model refreshChat];
 	}
 	if (eventsChannel == nil) {
 		eventsChannel = [PTPusher newChannel:@"groupon_go_production"];
 		eventsChannel.delegate = self;
 	}
 	//[eventsChannel startListeningForEvents];
-		
+	
 	pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
 								   channel:@"groupon_go_production"];
 	pusher.delegate = self;
+	pusher.reconnect = YES;
 	
 	[PTPusher setKey:@"534d197146cf867179ee"];
 	[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
@@ -134,6 +136,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	
 	[eventsChannel startListeningForEvents];
 
 	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -248,17 +251,8 @@
 	if ([event.name isEqualToString:@"new_post"]) {
 		[table beginUpdates];
 		[messages insertObject:event atIndex:[messages count]];
-		
-		/*NSString *html = [NSString stringWithContentsOfFile:[event.data valueForKey:@"body"] encoding:NSUTF8StringEncoding error:NULL];
-		NSData *data = [[event.data valueForKey:@"body"] dataUsingEncoding:NSUTF8StringEncoding];
-		NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:1.3], NSTextSizeMultiplierDocumentOption, 
-								 @"Verdana", DTDefaultFontFamily,  @"purple", DTDefaultLinkColor, nil]; // @"green",DTDefaultTextColor,
-		NSAttributedString *string = [[NSAttributedString alloc] initWithHTML:data options:options documentAttributes:NULL];
-		[attributedMessages insertObject:string atIndex:[attributedMessages count]];
-		 */
-		
 		NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([messages count] - 1) inSection:0];
-		[table insertRowsAtIndexPaths:[NSArray arrayWithObject:scrollIndexPath] withRowAnimation:UITableViewRowAnimationBottom];
+		[table insertRowsAtIndexPaths:[NSArray arrayWithObject:scrollIndexPath] withRowAnimation:UITableViewRowAnimationTop];
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2e9), dispatch_get_main_queue(), ^{
 				[table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:([messages count] - 1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 			});	
@@ -307,10 +301,11 @@
 		textField.text = @"No text!";
 		textField.textColor = [UIColor colorWithRed:255.0/255.0 green:108.0/255.0 blue:108.0/255.0 alpha:1];
 		textField.textAlignment = UITextAlignmentRight;
+		
+		[textField resignFirstResponder];
 	}
 	
 	text = NO;
-	[textField resignFirstResponder];
 }
 
 - (void)sendEventWithMessage:(NSString *)_message;
@@ -370,6 +365,15 @@
 {
 	[_textField resignFirstResponder];
 	
+	if ([textField.text length] > 0) {
+		GrouponGoModel *model = [GrouponGoModel sharedModel];
+		model.delegate = self;
+		[model postWithBody:textField.text];
+		
+		textField.text = nil;
+		textField.placeholder = @"Enter your message...";
+	}
+	
 	return YES;	
 }
 
@@ -409,6 +413,23 @@
 	return [[NSUserDefaults standardUserDefaults] objectForKey: @"authData"];
 }
 
+- (NSString *)flattenHTML:(NSString *)html trimWhiteSpace:(BOOL)trim 
+{
+	NSScanner *theScanner;
+	NSString *text_ = nil;
+	theScanner = [NSScanner scannerWithString:html];
+	while ([theScanner isAtEnd] == NO) {
+		[theScanner scanUpToString:@"<" intoString:NULL] ;                 
+		[theScanner scanUpToString:@">" intoString:&text_] ;
+		html = [html stringByReplacingOccurrencesOfString:
+				[ NSString stringWithFormat:@"%@>", text_]
+											   withString:@" "];
+	}
+	return trim ? [html stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] : html;
+	
+}
+
+
 #pragma mark -
 #pragma mark Table view data source
 
@@ -422,7 +443,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-	return 85;
+	return 95;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -437,23 +458,33 @@
 	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, message.frame.size.height);
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
 
-	/*messageView = [[UITextView alloc] initWithFrame:frame];
+	messageView = [[UITextView alloc] initWithFrame:frame];
 	messageView.editable = NO;
+	messageView.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0f];
 	messageView.backgroundColor = [UIColor clearColor];
 	messageView.dataDetectorTypes = UIDataDetectorTypeAll;
-	messageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	messageView.text = [event.data valueForKey:@"body"];
-	[cell addSubview:messageView];
+	messageView.textAlignment = UITextAlignmentLeft;
+	//messageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	 
-	TTStyledTextLabel *htmlLabel = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
+	NSRange stringRange = {0, MIN([[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO] length], 55)};
+	
+	if ([[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO] length] > 55) {
+		NSString *shortBody = [[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO] substringWithRange:stringRange];
+		[messageView setText:[NSString stringWithFormat:@"%@...", shortBody]];
+	}
+	else {
+		[messageView setText:[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO]];
+	}	
+	[cell addSubview:messageView];
+
+	/*TTStyledTextLabel *htmlLabel = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
 	htmlLabel.userInteractionEnabled = YES;
 	htmlLabel.textColor = [UIColor darkGrayColor];
 	htmlLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
 	htmlLabel.backgroundColor = [UIColor clearColor];
 	[cell addSubview:htmlLabel];*/
 	
-	
-	self.dataLabel = [[[IFTweetLabel alloc] initWithFrame:frame] autorelease];
+	/*self.dataLabel = [[[IFTweetLabel alloc] initWithFrame:frame] autorelease];
 	[self.dataLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:16.0f]];
 	[self.dataLabel setTextColor:[UIColor blackColor]];
 	[self.dataLabel setBackgroundColor:[UIColor clearColor]];
@@ -461,22 +492,25 @@
 	[self.dataLabel setText:[event.data valueForKey:@"body"]];
 	[self.dataLabel setLinksEnabled:YES];
 	
-	NSRange stringRange = {0, MIN([[event.data valueForKey:@"body"] length], 50)};
+	NSRange stringRange = {0, MIN([[event.data valueForKey:@"body"] length], 55)};
 	
 	NSString *noSpaces = [[event.data valueForKey:@"body"] stringByReplacingOccurrencesOfString:@"<mark>" withString:@""];
 	noSpaces = [noSpaces stringByReplacingOccurrencesOfString:@"</mark>" withString:@""];
 
-	if ([noSpaces length] > 50) {
+	if ([noSpaces length] > 55) {
 		NSString *shortBody = [noSpaces substringWithRange:stringRange];
 		[self.dataLabel setText:[NSString stringWithFormat:@"%@...", shortBody]];
 	}
 	else {
 		[self.dataLabel setText:noSpaces];
 	}	
+	 */
 	
 	[cell addSubview:self.dataLabel];
+
+	time.text = nil;
 	
-	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 79, 300, 2)];
+	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 84, 300, 2)];
 	lineView.tag = 101;
 	[lineView setLineColor:[UIColor colorWithRed:186.0/255.0 green:185.0/255.0 blue:185.0/255.0 alpha:1.0]];
 	[cell addSubview:lineView];
@@ -506,9 +540,10 @@
 	
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
 	
-	/*MessageViewController *vc = [[MessageViewController alloc] initWithNibName:@"MessageViewController" bundle:nil];
-	[self.navigationController pushViewController:vc animated:YES];
-	[vc release];*/
+	MessageViewController *vc = [[MessageViewController alloc] initWithNibName:@"MessageViewController" bundle:nil];
+	[self presentModalViewController:vc animated:YES];
+	//[self.navigationController pushViewController:vc animated:YES];
+	[vc release];
 }
 
 

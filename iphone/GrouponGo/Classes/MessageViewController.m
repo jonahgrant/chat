@@ -11,18 +11,18 @@
 
 @implementation MessageViewController
 
+@synthesize table, name, avatar, message;
 
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	//self.scrollView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg.png"]];
+	self.message.contentSize = CGSizeMake(302, 482);
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,6 +52,10 @@
 }
 */
 
+- (IBAction)close
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 #pragma mark -
 #pragma mark Table view data source

@@ -315,6 +315,8 @@ static NSArray *expressions = nil;
 		self.highlightImage = nil;
 	
 		self.label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)] autorelease];
+		self.label.textAlignment = UITextAlignmentLeft;
+		self.label.lineBreakMode = UILineBreakModeCharacterWrap;
 		[self addSubview:self.label];
 
 		self.linksEnabled = NO;

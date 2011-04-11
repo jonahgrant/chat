@@ -33,6 +33,7 @@
 	UILabel *name;
 	UITextView *messageView;
 	UILabel *message;
+	UILabel *time;
 	UIView *textFieldBackground;
 	UITextField *textField;
 	UIButton *send;
@@ -54,6 +55,7 @@
 @property (nonatomic, retain) UIView *textFieldBackground;
 @property (nonatomic, retain) UITextField *textField;
 @property (nonatomic, retain) UITextView *messageView;
+@property (nonatomic, retain) IBOutlet UILabel *time;
 @property (nonatomic, retain) IBOutlet AsyncImageView *avatar;
 @property (nonatomic, retain) UIButton *send;
 @property (nonatomic, retain) IBOutlet UITableViewCell *tableCell;
