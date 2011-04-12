@@ -145,6 +145,7 @@
 
 	table = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320, self.view.frame.size.height - 40.0)];
 	table.contentInset = UIEdgeInsetsMake(30, 0, 0, 0);
+	table.scrollIndicatorInsets = UIEdgeInsetsMake(30, 0, 0, 0);
 	table.dataSource = self;
 	table.delegate = self;
 	[self.view addSubview:table];
@@ -494,7 +495,13 @@
 	CGSize constraintSize = CGSizeMake(message.frame.size.width, MAXFLOAT);
 	CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 	NSLog(@"%f %f", labelSize.height, labelSize.width);
-	return labelSize.height + 60;
+	
+	if (labelSize.height > 75) {
+		return labelSize.height + 45;		
+	}
+	else {
+		return 75;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -503,27 +510,14 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
-	CGSize labelSize = [[event.data valueForKey:@"body"] sizeWithFont:[UIFont fontWithName:@"Helvetica Neue" size:16.0f] 
-													constrainedToSize:CGSizeMake(message.frame.size.width, MAXFLOAT)
-														lineBreakMode:UILineBreakModeWordWrap];
-	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, labelSize.height);
-
-	TTStyledTextLabel *htmlLabel = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
-	htmlLabel.userInteractionEnabled = YES;
-	htmlLabel.textColor = [UIColor darkGrayColor];
-	htmlLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
-	htmlLabel.backgroundColor = [UIColor clearColor];
-	
     if (cell == nil) {
 		if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
 			[[NSBundle mainBundle] loadNibNamed:@"TableCellSelf" owner:self options:nil];
 			cell = tableCellSelf;
-			htmlLabel.textAlignment = UITextAlignmentRight;
 		}
 		else {
 			[[NSBundle mainBundle] loadNibNamed:@"TableCell" owner:self options:nil];
 			cell = tableCell;
-			htmlLabel.textAlignment = UITextAlignmentLeft;
 		}
         self.tableCell = nil;
 	}
@@ -539,12 +533,37 @@
 	else {*/
 		name.text = [event.data valueForKey:@"name"];
 	//}
+
+	NSString *cellText = [event.data valueForKey:@"body"];
+	UIFont *cellFont = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
+	CGSize constraintSize = CGSizeMake(message.frame.size.width, MAXFLOAT);
+	CGSize labelSize = [cellText sizeWithFont:cellFont
+							constrainedToSize:constraintSize 
+								lineBreakMode:UILineBreakModeWordWrap];
+	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, labelSize.height);
 	
+	TTStyledTextLabel *htmlLabel = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
+	htmlLabel.userInteractionEnabled = YES;
+	htmlLabel.textColor = [UIColor darkGrayColor];
+	htmlLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
+	htmlLabel.backgroundColor = [UIColor clearColor];
 	htmlLabel.text = [TTStyledText textFromXHTML:[event.data valueForKey:@"body"]];
+	if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
+		htmlLabel.textAlignment = UITextAlignmentRight;
+		NSLog(@"message is current users");
+	}
+	else {
+		htmlLabel.textAlignment = UITextAlignmentLeft;
+		NSLog(@"message is someone elses");
+	}
 	[cell addSubview:htmlLabel];
 	
-	
-	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, labelSize.height +60, 300, 2)];
+	if (labelSize.height > 75) {
+		lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, labelSize.height + 44, 300, 2)];
+	}
+	else {
+		lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 75, 300, 2)];
+	}
 	lineView.tag = 101;
 	[lineView setLineColor:[UIColor colorWithRed:186.0/255.0 
 										   green:185.0/255.0 
