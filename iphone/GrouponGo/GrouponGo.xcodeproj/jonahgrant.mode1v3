@@ -274,7 +274,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
+									<integer>10</integer>
 									<integer>5</integer>
 									<integer>2</integer>
 									<integer>0</integer>
@@ -330,7 +330,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>AB8637601353F5C8006661E5</string>
+										<string>AB86378F13542A8A006661E5</string>
 										<key>history</key>
 										<array>
 											<string>AB80A89C13500584007AEB44</string>
@@ -381,7 +381,6 @@
 											<string>ABCC473E13527EFB0068E5ED</string>
 											<string>ABCC475B1352847E0068E5ED</string>
 											<string>ABCC476F1352893B0068E5ED</string>
-											<string>ABCC47A81352920E0068E5ED</string>
 											<string>ABCC47CA135295050068E5ED</string>
 											<string>ABCC47E0135296A00068E5ED</string>
 											<string>ABCC47EB1352974D0068E5ED</string>
@@ -393,10 +392,12 @@
 											<string>ABCC498D1352C4810068E5ED</string>
 											<string>AB8636DD1353DFDD006661E5</string>
 											<string>AB8636DE1353DFDD006661E5</string>
-											<string>AB8636DF1353DFDD006661E5</string>
 											<string>AB8636E01353DFDD006661E5</string>
 											<string>AB86374C1353F329006661E5</string>
-											<string>AB8637561353F3CB006661E5</string>
+											<string>AB86376A135423B9006661E5</string>
+											<string>AB86376D13542432006661E5</string>
+											<string>AB86378A13542A1B006661E5</string>
+											<string>AB86378B13542A1B006661E5</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -594,13 +595,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>AB8637611353F5C8006661E5</string>
 		<string>AB8636E51353DFDD006661E5</string>
 		<string>AB8636E61353DFDD006661E5</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>AB80A83D135004AB007AEB44</string>
-		<string>/Users/jonahgrant/chat/iphone/GrouponGo/GrouponGo.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/jonahgrant/chat/iphone/GrouponGo/GrouponGo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 121 1600 757 0 0 1600 878 </string>
@@ -949,18 +949,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1201, 715}}</string>
+								<string>{{0, 0}, {1324, 711}}</string>
 								<key>RubberWindowFrame</key>
-								<string>-1255 88 1201 756 -1600 0 1600 900 </string>
+								<string>-1372 94 1324 752 -1600 0 1600 900 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
 							<key>Proportion</key>
-							<string>715pt</string>
+							<string>711pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>715pt</string>
+					<string>711pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -980,7 +980,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>-1255 88 1201 756 -1600 0 1600 900 </string>
+			<string>-1372 94 1324 752 -1600 0 1600 900 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>

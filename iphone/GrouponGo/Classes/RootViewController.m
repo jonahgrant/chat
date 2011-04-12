@@ -65,6 +65,9 @@
 @synthesize eventsChannel;
 @synthesize attributedMessages;
 @synthesize time;
+@synthesize headerView;
+@synthesize roomName;
+@synthesize roomCount;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -89,31 +92,7 @@
 		    [self presentModalViewController:controller animated:YES];
 	    }
 	}
-	/*else if ([_engine isAuthorized]) {
-		if (messages == nil) {
-			messages = [[NSMutableArray alloc] init];
-			attributedMessages = [[NSMutableArray alloc] init];
-		}
-		if (eventsChannel == nil) {
-			eventsChannel = [PTPusher newChannel:ROOM_NAME];
-			eventsChannel.delegate = self;
-		}
-		[eventsChannel startListeningForEvents];
 		
-		pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
-									   channel:ROOM_NAME];
-		pusher.delegate = self;
-		pusher.reconnect = YES;
-		
-		[PTPusher setKey:@"534d197146cf867179ee"];
-		[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
-		[PTPusher setAppID:@"3638"];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
-		[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
-		
-	}*/
-	
 	table.showsVerticalScrollIndicator = NO;
 		
 	TTURLMap *map = [TTNavigator navigator].URLMap; 
@@ -164,10 +143,13 @@
 	NSLog(@"oauth token is: %@", [prefs stringForKey:@"oauth_token"]);
 
 	table = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320, self.view.frame.size.height - 40.0)];
+	table.contentInset = UIEdgeInsetsMake(30, 0, 0, 0);
 	table.dataSource = self;
 	table.delegate = self;
 	[self.view addSubview:table];
+	[self.view addSubview:headerView];
 	
+	headerView.backgroundColor = [UIColor clearColor];
 	
 	if ([_engine isAuthorized]) {
 		if (messages == nil) {
@@ -179,6 +161,9 @@
 			eventsChannel.delegate = self;
 		}
 		[eventsChannel startListeningForEvents];
+		
+		roomName.text = ROOM_NAME;
+		roomCount.text = @"12 members";
 		
 		pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
 									   channel:ROOM_NAME];
@@ -231,14 +216,7 @@
 	[send setTitleColor:[UIColor colorWithWhite:1.0 alpha:0.4] forState:UIControlStateNormal];
 	[send setTitleShadowColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateNormal];
 	[self.view addSubview:send];
-	
-	messageView = [[UITextView alloc] init];
-	//messageView.editable = NO;
-	//messageView.tag = 5;
-	messageView.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0f];
-	//messageView.backgroundColor = [UIColor clearColor];
-	messageView.textAlignment = UITextAlignmentLeft;
-	
+		
 }
 
 -(void)stopListening:(NSNotification *)notification
@@ -250,24 +228,8 @@
 	[eventsChannel startListeningForEvents];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-	NSLog(@"view did dissapear");
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-	
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)refresh
-{
-	NSLog(@"refreshing");	
 }
 
 #pragma mark -
@@ -337,7 +299,6 @@
 {
 
 	if (text) {
-	
 		GrouponGoModel *model = [GrouponGoModel sharedModel];
 		model.delegate = self;
 		[model postWithBody:textField.text];
@@ -354,28 +315,14 @@
 		[animation setToValue:[NSValue valueWithCGPoint:CGPointMake([textField center].x + 20.0f, [textField center].y)]];
 		[[textField layer] addAnimation:animation forKey:@"position"];
 		
-		textField.text = @"No text!";
-		textField.textColor = [UIColor colorWithRed:255.0/255.0 green:108.0/255.0 blue:108.0/255.0 alpha:1];
-		textField.textAlignment = UITextAlignmentRight;
+		//textField.text = @"No text!";
+		//textField.textColor = [UIColor colorWithRed:255.0/255.0 green:108.0/255.0 blue:108.0/255.0 alpha:1];
+		//textField.textAlignment = UITextAlignmentRight;
 		
-		[textField resignFirstResponder];
 	}
 	
 	text = NO;
 }
-
-- (void)sendEventWithMessage:(NSString *)_message;
-{
-	NSDictionary *payload = [NSDictionary dictionaryWithObjectsAndKeys:_message, @"title", @"Sent from libPusher", @"description", nil];
-	[self performSelector:@selector(sendEvent:) withObject:payload afterDelay:0.3];
-	[self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)sendEvent:(id)payload;
-{
-	[self.eventsChannel triggerEvent:@"new-event" data:payload];
-}
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -384,23 +331,17 @@
 
 - (void)updatePosition
 {
-	/*
-	 CGFloat offset = [table contentOffset].y;
-    if (suggestedHeaderHeight < maximumHeaderHeight || (offset > suggestedHeaderHeight - maximumHeaderHeight || offset <= 0)) {
-        CGRect frame = [headerContainerView frame];
-        if (suggestedHeaderHeight - maximumHeaderHeight > 0 && offset > 0) offset -= suggestedHeaderHeight - maximumHeaderHeight;
-        frame.origin.y = offset;
-        frame.size.height = suggestedHeaderHeight - offset;
-        [headerContainerView setFrame:frame];
+	
+	CGFloat offset = [table contentOffset].y;
+    if (offset) {
     }
-	*/
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)_textField {
 	[UIView beginAnimations:@"beginEditing" context:textFieldBackground];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDuration:0.3];
-	table.contentInset = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2 + 5, 0.0);
+	table.contentInset = UIEdgeInsetsMake(30.0, 0.0, self.view.frame.size.height/2 + 5, 0.0);
 	table.scrollIndicatorInsets = table.contentInset;
 	textFieldBackground.frame = CGRectMake(0.0, 160.0, self.view.frame.size.width, 40.0);
 	textField.frame = CGRectMake(6.0, 165.0, self.view.frame.size.width - 75.0, 29.0);
@@ -429,6 +370,16 @@
 		textField.text = nil;
 		textField.placeholder = @"Enter your message...";
 	}
+	else {
+		CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+		[animation setDuration:0.08];
+		[animation setRepeatCount:2];
+		[animation setAutoreverses:YES];
+		[animation setFromValue:[NSValue valueWithCGPoint:CGPointMake([textField center].x - 20.0f, [textField center].y)]];
+		[animation setToValue:[NSValue valueWithCGPoint:CGPointMake([textField center].x + 20.0f, [textField center].y)]];
+		[[textField layer] addAnimation:animation forKey:@"position"];
+	}
+
 	
 	return YES;	
 }

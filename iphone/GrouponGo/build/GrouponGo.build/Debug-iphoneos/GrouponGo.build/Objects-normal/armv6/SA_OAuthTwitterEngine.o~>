@@ -1,2 +1,0 @@
-/Users/jonahgrant/chat/iphone/GrouponGo/Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m: In function '-[SA_OAuthTwitterEngine isAuthorized]':
-/Users/jonahgrant/chat/iphone/GrouponGo/Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m:90: warning: unused variable 'userID'

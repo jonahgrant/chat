@@ -42,6 +42,10 @@
 	NSMutableArray *attributedMessages;
 	NSURL *tappedURL;
 
+	UIView *headerView;
+	UILabel *roomName;
+	UILabel *roomCount;
+	
 	SSLineView *lineView;
 	SA_OAuthTwitterEngine *_engine;
 	PTPusher *pusher;
@@ -63,6 +67,9 @@
 @property (nonatomic, readonly) PTPusherChannel *eventsChannel;
 @property (nonatomic, retain) NSMutableArray *attributedMessages;
 @property (nonatomic, retain) NSURL *tappedURL;
+@property (nonatomic, retain) IBOutlet UIView *headerView;
+@property (nonatomic, retain) IBOutlet UILabel *roomName;
+@property (nonatomic, retain) IBOutlet UILabel *roomCount;
 
 - (void)sendMessage;
 - (void)refresh;
