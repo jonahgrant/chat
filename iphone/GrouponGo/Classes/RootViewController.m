@@ -60,6 +60,7 @@
 @synthesize send;
 @synthesize table;
 @synthesize tableCell;
+@synthesize tableCellSelf;
 @synthesize messages;
 @synthesize pusher;
 @synthesize eventsChannel;
@@ -174,8 +175,13 @@
 		[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
 		[PTPusher setAppID:@"3638"];
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
-		[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(handlePusherEvent:)
+													 name:PTPusherEventReceivedNotification 
+												   object:nil];
+		[pusher addEventListener:@"alert" 
+						  target:self 
+						selector:@selector(handleAlertEvent:)];
 		
 	}
 	
@@ -217,6 +223,11 @@
 	[send setTitleShadowColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateNormal];
 	[self.view addSubview:send];
 		
+}
+
+- (void) OAuthTwitterController:(SA_OAuthTwitterController *)controller authenticatedWithUsername:(NSString *)_username
+{
+	NSLog(@"authenticated user");
 }
 
 -(void)stopListening:(NSNotification *)notification
@@ -335,6 +346,8 @@
 	CGFloat offset = [table contentOffset].y;
     if (offset) {
     }
+	
+	NSLog(@"offset for y is: %f", offset);
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)_textField {
@@ -415,28 +428,28 @@
 	[defaults setObject:username forKey:@"username"];
 	[defaults synchronize];
 	
-	if (messages == nil) {
-		messages = [[NSMutableArray alloc] init];
-		attributedMessages = [[NSMutableArray alloc] init];
-	}
-	if (eventsChannel == nil) {
+	/*if (eventsChannel == nil) {
+		if (messages == nil) {
+			messages = [[NSMutableArray alloc] init];
+			attributedMessages = [[NSMutableArray alloc] init];
+		}
 		eventsChannel = [PTPusher newChannel:ROOM_NAME];
 		eventsChannel.delegate = self;
+		[eventsChannel startListeningForEvents];
+		
+		pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
+									   channel:ROOM_NAME];
+		pusher.delegate = self;
+		pusher.reconnect = YES;
+		
+		[PTPusher setKey:@"534d197146cf867179ee"];
+		[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
+		[PTPusher setAppID:@"3638"];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
+		[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
 	}
-	[eventsChannel startListeningForEvents];
-	
-	pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
-								   channel:ROOM_NAME];
-	pusher.delegate = self;
-	pusher.reconnect = YES;
-	
-	[PTPusher setKey:@"534d197146cf867179ee"];
-	[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
-	[PTPusher setAppID:@"3638"];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
-	[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
-
+	 */
 }
 
 - (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username {
@@ -489,37 +502,64 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-		[[NSBundle mainBundle] loadNibNamed:@"TableCell" owner:self options:nil];
-        cell = tableCell;
-        self.tableCell = nil;
-	}
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
-	
-	NSString *cellText = [event.data valueForKey:@"body"];
-	UIFont *cellFont = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
-	CGSize constraintSize = CGSizeMake(message.frame.size.width, MAXFLOAT);
-	CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+	CGSize labelSize = [[event.data valueForKey:@"body"] sizeWithFont:[UIFont fontWithName:@"Helvetica Neue" size:16.0f] 
+													constrainedToSize:CGSizeMake(message.frame.size.width, MAXFLOAT)
+														lineBreakMode:UILineBreakModeWordWrap];
 	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, labelSize.height);
-	
+
 	TTStyledTextLabel *htmlLabel = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
 	htmlLabel.userInteractionEnabled = YES;
 	htmlLabel.textColor = [UIColor darkGrayColor];
 	htmlLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
 	htmlLabel.backgroundColor = [UIColor clearColor];
+	
+    if (cell == nil) {
+		if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
+			[[NSBundle mainBundle] loadNibNamed:@"TableCellSelf" owner:self options:nil];
+			cell = tableCellSelf;
+			htmlLabel.textAlignment = UITextAlignmentRight;
+		}
+		else {
+			[[NSBundle mainBundle] loadNibNamed:@"TableCell" owner:self options:nil];
+			cell = tableCell;
+			htmlLabel.textAlignment = UITextAlignmentLeft;
+		}
+        self.tableCell = nil;
+	}
+	
+	/*if ([messages count] > 1) {
+		PTPusherEvent *eventAbove = [messages objectAtIndex:indexPath.row -1];
+
+		if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[eventAbove.data valueForKey:@"twitter_login"]]) {
+			NSLog(@"user posted twice in a row");
+			name.text = @"twice";
+		}
+	}
+	else {*/
+		name.text = [event.data valueForKey:@"name"];
+	//}
+	
 	htmlLabel.text = [TTStyledText textFromXHTML:[event.data valueForKey:@"body"]];
 	[cell addSubview:htmlLabel];
 	
 	
 	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, labelSize.height +60, 300, 2)];
 	lineView.tag = 101;
-	[lineView setLineColor:[UIColor colorWithRed:186.0/255.0 green:185.0/255.0 blue:185.0/255.0 alpha:1.0]];
+	[lineView setLineColor:[UIColor colorWithRed:186.0/255.0 
+										   green:185.0/255.0 
+											blue:185.0/255.0 
+										   alpha:1.0]];
 	[cell addSubview:lineView];
 	
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 	time.text = nil;
-	name.text = [event.data valueForKey:@"name"];
+	
+	if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
+		NSLog(@"this is you!");
+	}
+
 	
 	//message.text = [attributedMessages objectAtIndex:indexPath.row];
 	//[(UITextView *)[cell.contentView viewWithTag:5] setText:[attributedMessages objectAtIndex:indexPath.row]];

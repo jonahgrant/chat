@@ -233,7 +233,11 @@
 			NSString				*value = [keyValueArray objectAtIndex: 1];
 			
 			NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-			if ([key isEqualToString:@"screen_name"]) return value;
+			if ([key isEqualToString:@"screen_name"])
+			{
+				[prefs setObject:value forKey:@"screen_name"];
+				return value;
+			}
 			if ([key isEqualToString:@"user_id"]) [prefs setObject:value forKey:@"user_id"];
 			if ([key isEqualToString:@"oauth_token"]) [prefs setObject:value forKey:@"oauth_token"];
 		}

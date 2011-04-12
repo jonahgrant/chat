@@ -29,6 +29,7 @@
 @interface RootViewController : UIViewController <UIActionSheetDelegate, PTPusherChannelDelegate, PTPusherDelegate, NSXMLParserDelegate, UITextFieldDelegate, SA_OAuthTwitterControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
 	UITableView *table;
 	UITableViewCell *tableCell;
+	UITableViewCell *tableCellSelf;
 	UILabel *name;
 	UITextView *messageView;
 	UILabel *message;
@@ -62,6 +63,7 @@
 @property (nonatomic, retain) IBOutlet AsyncImageView *avatar;
 @property (nonatomic, retain) UIButton *send;
 @property (nonatomic, retain) IBOutlet UITableViewCell *tableCell;
+@property (nonatomic, retain) IBOutlet UITableViewCell *tableCellSelf;
 @property (nonatomic, retain) NSMutableArray *messages;
 @property (nonatomic, retain) PTPusher *pusher;
 @property (nonatomic, readonly) PTPusherChannel *eventsChannel;
