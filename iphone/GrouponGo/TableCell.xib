@@ -50,7 +50,7 @@
 							<object class="IBUILabel" id="318342633">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{79, 3}, {229, 23}}</string>
+								<string key="NSFrame">{{79, 2}, {229, 23}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -85,14 +85,14 @@
 							<object class="IBUILabel" id="504200471">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{73, 18}, {229, 54}}</string>
+								<string key="NSFrame">{{80, 24}, {227, 65}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">5</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">hello!</string>
+								<string key="IBUIText"/>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">HelveticaNeue</string>
 									<double key="NSSize">16</double>
@@ -116,7 +116,7 @@
 							<object class="IBUIView" id="366101141">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{15, 9}, {54, 54}}</string>
+								<string key="NSFrame">{{15, 8}, {54, 54}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -129,7 +129,7 @@
 							<object class="IBUIImageView" id="576030499">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{11, 5}, {62, 63}}</string>
+								<string key="NSFrame">{{11, 4}, {62, 63}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -144,7 +144,7 @@
 							<object class="IBUILabel" id="806387806">
 								<reference key="NSNextResponder" ref="807458838"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{11, 69}, {62, 22}}</string>
+								<string key="NSFrame">{{11, 68}, {62, 22}}</string>
 								<reference key="NSSuperview" ref="807458838"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -260,8 +260,8 @@
 							<reference ref="318342633"/>
 							<reference ref="366101141"/>
 							<reference ref="576030499"/>
-							<reference ref="504200471"/>
 							<reference ref="806387806"/>
+							<reference ref="504200471"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -330,7 +330,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABBcAAAwrQAAA</bytes>
 					</object>
-					<string>{{725, 606}, {320, 95}}</string>
+					<string>{{-498, 575}, {320, 95}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -338,7 +338,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCcAAAwqYAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCkgAAwrAAAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -358,7 +358,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">15</int>
+			<int key="maxID">19</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -389,6 +389,13 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">LRLinkableLabel.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">PusherApp/AsyncSocket/AsyncSocket.h</string>
 					</object>
 				</object>
@@ -408,6 +415,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>avatar</string>
 							<string>message</string>
+							<string>messageView</string>
 							<string>name</string>
 							<string>tableCell</string>
 							<string>time</string>
@@ -416,6 +424,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>AsyncImageView</string>
 							<string>UILabel</string>
+							<string>UITextView</string>
 							<string>UILabel</string>
 							<string>UITableViewCell</string>
 							<string>UILabel</string>
@@ -427,6 +436,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>avatar</string>
 							<string>message</string>
+							<string>messageView</string>
 							<string>name</string>
 							<string>tableCell</string>
 							<string>time</string>
@@ -440,6 +450,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">message</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">messageView</string>
+								<string key="candidateClassName">UITextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">name</string>
@@ -597,6 +611,14 @@
 					<reference key="sourceIdentifier" ref="745231806"/>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">UIScrollView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UIScrollView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">UISearchBar</string>
 					<string key="superclassName">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -618,6 +640,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UITableViewCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UITextView</string>
+					<string key="superclassName">UIScrollView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UITextView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

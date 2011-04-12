@@ -85,6 +85,7 @@
 		AB80AC6713501BE7007AEB44 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB80AC6213501BE7007AEB44 /* ImageCache.m */; };
 		AB80AC6813501BE7007AEB44 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = AB80AC6313501BE7007AEB44 /* white.png */; };
 		AB80ACCA135022E1007AEB44 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB80ACC9135022E1007AEB44 /* QuartzCore.framework */; };
+		AB8633691352D275006661E5 /* LRLinkableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8633681352D275006661E5 /* LRLinkableLabel.m */; };
 		AB9621A31351493F00744F63 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9621A21351493F00744F63 /* CoreText.framework */; };
 		AB96221513514D0B00744F63 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = AB96221313514D0B00744F63 /* input.png */; };
 		AB96221613514D0B00744F63 /* input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB96221413514D0B00744F63 /* input@2x.png */; };
@@ -93,9 +94,6 @@
 		ABCC44591352323E0068E5ED /* GrouponGoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC44581352323E0068E5ED /* GrouponGoModel.m */; };
 		ABCC4462135232900068E5ED /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC4461135232900068E5ED /* Constants.m */; };
 		ABCC4467135232BF0068E5ED /* GrouponGoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC4466135232BF0068E5ED /* GrouponGoRequest.m */; };
-		ABCC45CC13525D120068E5ED /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45C713525D120068E5ED /* RegexKitLite.m */; };
-		ABCC45CD13525D120068E5ED /* RKLMatchEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45C913525D120068E5ED /* RKLMatchEnumerator.m */; };
-		ABCC45CE13525D120068E5ED /* IFTweetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45CA13525D120068E5ED /* IFTweetLabel.m */; };
 		ABCC45D613525DDE0068E5ED /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCC45D513525DDE0068E5ED /* libicucore.A.dylib */; };
 		ABCC45EA13525FCE0068E5ED /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCC45E813525FCE0068E5ED /* MessageViewController.m */; };
 		ABCC45EB13525FCE0068E5ED /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABCC45E913525FCE0068E5ED /* MessageViewController.xib */; };
@@ -432,6 +430,8 @@
 		AB80AC6213501BE7007AEB44 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
 		AB80AC6313501BE7007AEB44 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		AB80ACC9135022E1007AEB44 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AB8633671352D275006661E5 /* LRLinkableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLinkableLabel.h; sourceTree = "<group>"; };
+		AB8633681352D275006661E5 /* LRLinkableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLinkableLabel.m; sourceTree = "<group>"; };
 		AB9621A21351493F00744F63 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		AB96221313514D0B00744F63 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
 		AB96221413514D0B00744F63 /* input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input@2x.png"; sourceTree = "<group>"; };
@@ -443,12 +443,6 @@
 		ABCC4461135232900068E5ED /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		ABCC4465135232BF0068E5ED /* GrouponGoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrouponGoRequest.h; sourceTree = "<group>"; };
 		ABCC4466135232BF0068E5ED /* GrouponGoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrouponGoRequest.m; sourceTree = "<group>"; };
-		ABCC45C613525D110068E5ED /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
-		ABCC45C713525D120068E5ED /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
-		ABCC45C813525D120068E5ED /* RKLMatchEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLMatchEnumerator.h; sourceTree = "<group>"; };
-		ABCC45C913525D120068E5ED /* RKLMatchEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLMatchEnumerator.m; sourceTree = "<group>"; };
-		ABCC45CA13525D120068E5ED /* IFTweetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFTweetLabel.m; sourceTree = "<group>"; };
-		ABCC45CB13525D120068E5ED /* IFTweetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFTweetLabel.h; sourceTree = "<group>"; };
 		ABCC45D513525DDE0068E5ED /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = usr/lib/libicucore.A.dylib; sourceTree = SDKROOT; };
 		ABCC45E713525FCE0068E5ED /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		ABCC45E813525FCE0068E5ED /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
@@ -970,10 +964,18 @@
 			name = "GrouponGo API";
 			sourceTree = "<group>";
 		};
-		AB96206013512B1C00744F63 /* Root */ = {
+		AB8634091352E40D006661E5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				AB80AC0813501B1F007AEB44 /* TableCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		AB96206013512B1C00744F63 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				AB8634091352E40D006661E5 /* Cell */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
@@ -984,22 +986,10 @@
 		ABCC45C413525CF90068E5ED /* Data detecting UILabel */ = {
 			isa = PBXGroup;
 			children = (
-				ABCC45C513525D110068E5ED /* RegexKitLite */,
-				ABCC45CA13525D120068E5ED /* IFTweetLabel.m */,
-				ABCC45CB13525D120068E5ED /* IFTweetLabel.h */,
+				AB8633671352D275006661E5 /* LRLinkableLabel.h */,
+				AB8633681352D275006661E5 /* LRLinkableLabel.m */,
 			);
 			name = "Data detecting UILabel";
-			sourceTree = "<group>";
-		};
-		ABCC45C513525D110068E5ED /* RegexKitLite */ = {
-			isa = PBXGroup;
-			children = (
-				ABCC45C613525D110068E5ED /* RegexKitLite.h */,
-				ABCC45C713525D120068E5ED /* RegexKitLite.m */,
-				ABCC45C813525D120068E5ED /* RKLMatchEnumerator.h */,
-				ABCC45C913525D120068E5ED /* RKLMatchEnumerator.m */,
-			);
-			path = RegexKitLite;
 			sourceTree = "<group>";
 		};
 		ABCC45E613525F560068E5ED /* Message */ = {
@@ -1380,11 +1370,9 @@
 				ABCC44591352323E0068E5ED /* GrouponGoModel.m in Sources */,
 				ABCC4462135232900068E5ED /* Constants.m in Sources */,
 				ABCC4467135232BF0068E5ED /* GrouponGoRequest.m in Sources */,
-				ABCC45CC13525D120068E5ED /* RegexKitLite.m in Sources */,
-				ABCC45CD13525D120068E5ED /* RKLMatchEnumerator.m in Sources */,
-				ABCC45CE13525D120068E5ED /* IFTweetLabel.m in Sources */,
 				ABCC45EA13525FCE0068E5ED /* MessageViewController.m in Sources */,
 				ABCC4701135274FD0068E5ED /* UserViewController.m in Sources */,
+				AB8633691352D275006661E5 /* LRLinkableLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

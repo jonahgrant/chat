@@ -81,6 +81,8 @@ NSString *URLEncodedString(NSString *unencodedString) {
   pusher.delegate = self;
   pusher.reconnect = YES;
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedEventNotification:) name:PTPusherEventReceivedNotification object:nil];
+	
+	NSLog(@"starting to listen for events");
 }
 
 - (void)stopListeningForEvents;
@@ -89,6 +91,7 @@ NSString *URLEncodedString(NSString *unencodedString) {
     name:PTPusherEventReceivedNotification object:nil];
   [pusher release];
   pusher = nil;
+	NSLog(@"stopped listening for events");
 }
 
 - (void)triggerEvent:(NSString *)event data:(id)data;

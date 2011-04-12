@@ -11,7 +11,6 @@
 #import "PTPusher.h"
 #import "PTPusherEvent.h"
 #import "PTPusherChannel.h"
-#import "Three20/Three20.h"
 #import "MessageViewController.h"
 
 #define kOAuthConsumerKey        @"StQR6yZ9xgRkqFHI8TO1w"
@@ -20,6 +19,7 @@
 #define CELL_CONTENT_WIDTH 320.0
 #define CELL_CONTENT_MARGIN 10.0
 
+#define ROOM_NAME @"groupon_go_production"
 
 @implementation UINavigationBar (CustomImage)
 
@@ -64,7 +64,6 @@
 @synthesize pusher;
 @synthesize eventsChannel;
 @synthesize attributedMessages;
-@synthesize dataLabel;
 @synthesize time;
 
 #pragma mark -
@@ -75,42 +74,60 @@
 	
 	//self.title = @"Back";
 	
-	if (messages == nil) {
-		messages = [[NSMutableArray alloc] init];
-		attributedMessages = [[NSMutableArray alloc] init];
-		
-		//GrouponGoModel *model = [GrouponGoModel sharedModel];
-		//[model setDelegate:self];
-		//[model refreshChat];
+	if(!_engine){
+		_engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];
+		_engine.consumerKey    = kOAuthConsumerKey;
+		_engine.consumerSecret = kOAuthConsumerSecret;
 	}
-	if (eventsChannel == nil) {
-		eventsChannel = [PTPusher newChannel:@"groupon_go_production"];
-		eventsChannel.delegate = self;
-	}
-	//[eventsChannel startListeningForEvents];
-	
-	pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
-								   channel:@"groupon_go_production"];
-	pusher.delegate = self;
-	pusher.reconnect = YES;
-	
-	[PTPusher setKey:@"534d197146cf867179ee"];
-	[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
-	[PTPusher setAppID:@"3638"];
+	else {
 		
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTweetNotification:) name:IFTweetLabelURLNotification object:nil];
-	[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
+	}
+
+	if(![_engine isAuthorized]){
+	    UIViewController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];
+	    if (controller){
+		    [self presentModalViewController:controller animated:YES];
+	    }
+	}
+	/*else if ([_engine isAuthorized]) {
+		if (messages == nil) {
+			messages = [[NSMutableArray alloc] init];
+			attributedMessages = [[NSMutableArray alloc] init];
+		}
+		if (eventsChannel == nil) {
+			eventsChannel = [PTPusher newChannel:ROOM_NAME];
+			eventsChannel.delegate = self;
+		}
+		[eventsChannel startListeningForEvents];
+		
+		pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
+									   channel:ROOM_NAME];
+		pusher.delegate = self;
+		pusher.reconnect = YES;
+		
+		[PTPusher setKey:@"534d197146cf867179ee"];
+		[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
+		[PTPusher setAppID:@"3638"];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
+		[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
+		
+	}*/
 	
 	table.showsVerticalScrollIndicator = NO;
 		
 	TTURLMap *map = [TTNavigator navigator].URLMap; 
 	[map from:@"*" toViewController:self selector:@selector(handleLink:)]; 
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopListening:) name:UIApplicationWillResignActiveNotification object:NULL];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startListening:) name:UIApplicationWillEnterForegroundNotification object:NULL];
+
 }
 
 - (void)handleLink:(id)sender
 {
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", sender]]];
+	NSLog(@"%@", sender);
 }
 
 - (void)handlePusherEvent:(NSNotification *)note;
@@ -134,19 +151,48 @@
 	[alertView release];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];	
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
-	[eventsChannel startListeningForEvents];
-
 	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 	NSLog(@"id is: %@", [prefs stringForKey:@"user_id"]);
-	
+	NSLog(@"oauth token is: %@", [prefs stringForKey:@"oauth_token"]);
+
 	table = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320, self.view.frame.size.height - 40.0)];
 	table.dataSource = self;
 	table.delegate = self;
 	[self.view addSubview:table];
 	
+	
+	if ([_engine isAuthorized]) {
+		if (messages == nil) {
+			messages = [[NSMutableArray alloc] init];
+			attributedMessages = [[NSMutableArray alloc] init];
+		}
+		if (eventsChannel == nil) {
+			eventsChannel = [PTPusher newChannel:ROOM_NAME];
+			eventsChannel.delegate = self;
+		}
+		[eventsChannel startListeningForEvents];
+		
+		pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
+									   channel:ROOM_NAME];
+		pusher.delegate = self;
+		pusher.reconnect = YES;
+		
+		[PTPusher setKey:@"534d197146cf867179ee"];
+		[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
+		[PTPusher setAppID:@"3638"];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
+		[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
+		
+	}
 	
 	UIView *v = [UIView new];
 	v.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Bg.png"]];
@@ -186,24 +232,33 @@
 	[send setTitleShadowColor:[UIColor colorWithWhite:0.5 alpha:1] forState:UIControlStateNormal];
 	[self.view addSubview:send];
 	
+	messageView = [[UITextView alloc] init];
+	//messageView.editable = NO;
+	//messageView.tag = 5;
+	messageView.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0f];
+	//messageView.backgroundColor = [UIColor clearColor];
+	messageView.textAlignment = UITextAlignmentLeft;
+	
 }
 
-- (void)viewDidAppear: (BOOL)animated {
-	[super viewDidAppear:animated];
+-(void)stopListening:(NSNotification *)notification
+{
+	[eventsChannel stopListeningForEvents];
+}
+-(void)startListening:(NSNotification *)notification
+{
+	[eventsChannel startListeningForEvents];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[super viewDidDisappear:animated];
+	NSLog(@"view did dissapear");
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
 	
-	if(!_engine){
-		_engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];
-		_engine.consumerKey    = kOAuthConsumerKey;
-		_engine.consumerSecret = kOAuthConsumerSecret;
-	}
-		
-	if(![_engine isAuthorized]){
-	    UIViewController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];
-		
-	    if (controller){
-		    [self presentModalViewController:controller animated:YES];
-	    }
-	}
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -251,6 +306,7 @@
 	if ([event.name isEqualToString:@"new_post"]) {
 		[table beginUpdates];
 		[messages insertObject:event atIndex:[messages count]];
+		[attributedMessages insertObject:[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO] atIndex:[attributedMessages count]];
 		NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([messages count] - 1) inSection:0];
 		[table insertRowsAtIndexPaths:[NSArray arrayWithObject:scrollIndexPath] withRowAnimation:UITableViewRowAnimationTop];
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2e9), dispatch_get_main_queue(), ^{
@@ -407,10 +463,34 @@
 	[defaults setObject:data forKey:@"authData"];
 	[defaults setObject:username forKey:@"username"];
 	[defaults synchronize];
+	
+	if (messages == nil) {
+		messages = [[NSMutableArray alloc] init];
+		attributedMessages = [[NSMutableArray alloc] init];
+	}
+	if (eventsChannel == nil) {
+		eventsChannel = [PTPusher newChannel:ROOM_NAME];
+		eventsChannel.delegate = self;
+	}
+	[eventsChannel startListeningForEvents];
+	
+	pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
+								   channel:ROOM_NAME];
+	pusher.delegate = self;
+	pusher.reconnect = YES;
+	
+	[PTPusher setKey:@"534d197146cf867179ee"];
+	[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
+	[PTPusher setAppID:@"3638"];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
+	[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
+
 }
 
 - (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username {
-	return [[NSUserDefaults standardUserDefaults] objectForKey: @"authData"];
+	NSLog(@"twitter authed 2");
+	return [[NSUserDefaults standardUserDefaults] objectForKey:@"authData"];
 }
 
 - (NSString *)flattenHTML:(NSString *)html trimWhiteSpace:(BOOL)trim 
@@ -443,8 +523,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-	return 95;
+	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
+
+	NSString *cellText = [event.data valueForKey:@"body"];
+	UIFont *cellFont = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
+	CGSize constraintSize = CGSizeMake(message.frame.size.width, MAXFLOAT);
+	CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+	NSLog(@"%f %f", labelSize.height, labelSize.width);
+	return labelSize.height + 60;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -455,82 +543,42 @@
         cell = tableCell;
         self.tableCell = nil;
 	}
-	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, message.frame.size.height);
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
-
-	messageView = [[UITextView alloc] initWithFrame:frame];
-	messageView.editable = NO;
-	messageView.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0f];
-	messageView.backgroundColor = [UIColor clearColor];
-	messageView.dataDetectorTypes = UIDataDetectorTypeAll;
-	messageView.textAlignment = UITextAlignmentLeft;
-	//messageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	 
-	NSRange stringRange = {0, MIN([[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO] length], 55)};
 	
-	if ([[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO] length] > 55) {
-		NSString *shortBody = [[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO] substringWithRange:stringRange];
-		[messageView setText:[NSString stringWithFormat:@"%@...", shortBody]];
-	}
-	else {
-		[messageView setText:[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO]];
-	}	
-	[cell addSubview:messageView];
-
-	/*TTStyledTextLabel *htmlLabel = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
+	NSString *cellText = [event.data valueForKey:@"body"];
+	UIFont *cellFont = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
+	CGSize constraintSize = CGSizeMake(message.frame.size.width, MAXFLOAT);
+	CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, labelSize.height);
+	
+	TTStyledTextLabel *htmlLabel = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
 	htmlLabel.userInteractionEnabled = YES;
 	htmlLabel.textColor = [UIColor darkGrayColor];
 	htmlLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
 	htmlLabel.backgroundColor = [UIColor clearColor];
-	[cell addSubview:htmlLabel];*/
+	htmlLabel.text = [TTStyledText textFromXHTML:[event.data valueForKey:@"body"]];
+	[cell addSubview:htmlLabel];
 	
-	/*self.dataLabel = [[[IFTweetLabel alloc] initWithFrame:frame] autorelease];
-	[self.dataLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:16.0f]];
-	[self.dataLabel setTextColor:[UIColor blackColor]];
-	[self.dataLabel setBackgroundColor:[UIColor clearColor]];
-	[self.dataLabel setNumberOfLines:0];
-	[self.dataLabel setText:[event.data valueForKey:@"body"]];
-	[self.dataLabel setLinksEnabled:YES];
 	
-	NSRange stringRange = {0, MIN([[event.data valueForKey:@"body"] length], 55)};
-	
-	NSString *noSpaces = [[event.data valueForKey:@"body"] stringByReplacingOccurrencesOfString:@"<mark>" withString:@""];
-	noSpaces = [noSpaces stringByReplacingOccurrencesOfString:@"</mark>" withString:@""];
-
-	if ([noSpaces length] > 55) {
-		NSString *shortBody = [noSpaces substringWithRange:stringRange];
-		[self.dataLabel setText:[NSString stringWithFormat:@"%@...", shortBody]];
-	}
-	else {
-		[self.dataLabel setText:noSpaces];
-	}	
-	 */
-	
-	[cell addSubview:self.dataLabel];
-
-	time.text = nil;
-	
-	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 84, 300, 2)];
+	lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, labelSize.height +60, 300, 2)];
 	lineView.tag = 101;
 	[lineView setLineColor:[UIColor colorWithRed:186.0/255.0 green:185.0/255.0 blue:185.0/255.0 alpha:1.0]];
 	[cell addSubview:lineView];
 	
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-	//message.text = [event.data valueForKey:@"body"];
+	time.text = nil;
 	name.text = [event.data valueForKey:@"name"];
-	message.text = nil;
 	
+	//message.text = [attributedMessages objectAtIndex:indexPath.row];
+	//[(UITextView *)[cell.contentView viewWithTag:5] setText:[attributedMessages objectAtIndex:indexPath.row]];
+
 	[(AsyncImageView *)[cell.contentView viewWithTag:104] setBackgroundColor:[UIColor clearColor]];
 	[(AsyncImageView *)[cell.contentView viewWithTag:104] loadImageFromURL:[NSURL URLWithString:[event.data valueForKey:@"profile_image_url"]]];
 
     return cell;
 }
 
-- (void)handleTweetNotification:(NSNotification *)notification
-{
-	NSLog(@"handleTweetNotification: notification = %@", notification);
-}
 
 #pragma mark -
 #pragma mark Table view delegate
@@ -541,7 +589,7 @@
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
 	
 	MessageViewController *vc = [[MessageViewController alloc] initWithNibName:@"MessageViewController" bundle:nil];
-	[self presentModalViewController:vc animated:YES];
+	//[self presentModalViewController:vc animated:YES];
 	//[self.navigationController pushViewController:vc animated:YES];
 	[vc release];
 }
