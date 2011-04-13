@@ -7,8 +7,37 @@
 //
 
 #import "GrouponGoAppDelegate.h"
-#import "RootViewController.h"
+#import "ChatViewController.h"
 
+@implementation UINavigationBar (CustomImage)
+
+- (void)drawRect:(CGRect)rect {
+	
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+	label.text = self.topItem.title;
+	label.backgroundColor = [UIColor clearColor];
+	label.font = [UIFont boldSystemFontOfSize:19.0];
+	label.shadowColor = [UIColor whiteColor];
+	label.shadowOffset = CGSizeMake(0.0, 1.0);
+	label.textAlignment = UITextAlignmentCenter;
+	label.textColor = [UIColor colorWithRed:76.0/255.0
+									  green:90.0/255.0
+									   blue:99.0/255.0
+									  alpha:1.0];
+	
+	CGRect labelFrame = label.frame;
+	labelFrame.size = [label.text sizeWithFont:label.font];
+	labelFrame.origin = CGPointMake((320.0 - labelFrame.size.width) / 2.0, (44.0 - labelFrame.size.height) / 2.0);
+	
+	label.frame = CGRectIntegral(labelFrame);
+	
+	self.topItem.titleView = label;
+	[label release];
+	
+	[[UIImage imageNamed:@"navbar.png"] drawInRect:rect];
+}
+
+@end
 
 @implementation GrouponGoAppDelegate
 

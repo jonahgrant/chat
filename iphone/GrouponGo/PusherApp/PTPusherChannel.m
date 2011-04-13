@@ -76,13 +76,18 @@ NSString *URLEncodedString(NSString *unencodedString) {
 
 - (void)startListeningForEvents;
 {
-  [pusher release];
-  pusher = [[PTPusher alloc] initWithKey:APIKey channel:name];
-  pusher.delegate = self;
-  pusher.reconnect = YES;
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedEventNotification:) name:PTPusherEventReceivedNotification object:nil];
-	
-	NSLog(@"starting to listen for events");
+	if (pusher == nil) {
+		[pusher release];
+		pusher = [[PTPusher alloc] initWithKey:APIKey channel:name];
+		pusher.delegate = self;
+		pusher.reconnect = YES;
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedEventNotification:) name:PTPusherEventReceivedNotification object:nil];
+		
+		NSLog(@"starting to listen for events");
+	}
+	else {
+		NSLog(@"pusher is not nil");
+	}
 }
 
 - (void)stopListeningForEvents;
@@ -92,6 +97,8 @@ NSString *URLEncodedString(NSString *unencodedString) {
   [pusher release];
   pusher = nil;
 	NSLog(@"stopped listening for events");
+	
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"listening"];
 }
 
 - (void)triggerEvent:(NSString *)event data:(id)data;

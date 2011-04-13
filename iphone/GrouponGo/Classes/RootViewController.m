@@ -73,11 +73,29 @@
 #pragma mark -
 #pragma mark View lifecycle
 
+ - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	 self = [super initWithNibName:@"RootViewController" bundle:nil];
+		if (self) {
+			// Custom initialization.
+		}
+	 return self;
+}
+
+- (id)initWithRoomName:(NSString *)room_name
+{
+	[self setRoomTitle:room_name];
+	return self;
+}
+
+- (void)setRoomTitle:(NSString *)room_name
+{
+	NSLog(@"room is %@", room_name);
+	room = room_name;	 
+}
+	 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	//self.title = @"Back";
-	
+		
 	if(!_engine){
 		_engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];
 		_engine.consumerKey    = kOAuthConsumerKey;
@@ -159,16 +177,16 @@
 			attributedMessages = [[NSMutableArray alloc] init];
 		}
 		if (eventsChannel == nil) {
-			eventsChannel = [PTPusher newChannel:ROOM_NAME];
+			eventsChannel = [PTPusher newChannel:room];
 			eventsChannel.delegate = self;
 		}
 		[eventsChannel startListeningForEvents];
 		
-		roomName.text = ROOM_NAME;
+		roomName.text = room;
 		roomCount.text = @"12 members";
 		
 		pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
-									   channel:ROOM_NAME];
+									   channel:room];
 		pusher.delegate = self;
 		pusher.reconnect = YES;
 		
@@ -280,7 +298,7 @@
 	if ([event.name isEqualToString:@"new_post"]) {
 		[table beginUpdates];
 		[messages insertObject:event atIndex:[messages count]];
-		[attributedMessages insertObject:[self flattenHTML:[event.data valueForKey:@"body"] trimWhiteSpace:NO] atIndex:[attributedMessages count]];
+		[attributedMessages insertObject:[TTStyledText textFromXHTML:[event.data valueForKey:@"body"]] atIndex:[attributedMessages count]];
 		NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([messages count] - 1) inSection:0];
 		[table insertRowsAtIndexPaths:[NSArray arrayWithObject:scrollIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2e9), dispatch_get_main_queue(), ^{
@@ -411,8 +429,8 @@
 	[UIView beginAnimations:@"endEditing" context:textFieldBackground];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDuration:0.3];
-	table.contentInset = UIEdgeInsetsZero;
-	table.scrollIndicatorInsets = UIEdgeInsetsZero;
+	table.contentInset = UIEdgeInsetsMake(30, 0, 0, 0);
+	table.scrollIndicatorInsets = UIEdgeInsetsMake(30, 0, 0, 0);
 	textFieldBackground.frame = CGRectMake(0.0, self.view.frame.size.height - 40.0, self.view.frame.size.width, 40.0);
 	textField.frame = CGRectMake(6.0, 381.5, self.view.frame.size.width - 75.0, 29.0);
 	send.frame = CGRectMake(self.view.frame.size.width - 65.0, 383, 59.0, 27.0);
@@ -429,28 +447,6 @@
 	[defaults setObject:username forKey:@"username"];
 	[defaults synchronize];
 	
-	/*if (eventsChannel == nil) {
-		if (messages == nil) {
-			messages = [[NSMutableArray alloc] init];
-			attributedMessages = [[NSMutableArray alloc] init];
-		}
-		eventsChannel = [PTPusher newChannel:ROOM_NAME];
-		eventsChannel.delegate = self;
-		[eventsChannel startListeningForEvents];
-		
-		pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" 
-									   channel:ROOM_NAME];
-		pusher.delegate = self;
-		pusher.reconnect = YES;
-		
-		[PTPusher setKey:@"534d197146cf867179ee"];
-		[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
-		[PTPusher setAppID:@"3638"];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePusherEvent:) name:PTPusherEventReceivedNotification object:nil];
-		[pusher addEventListener:@"alert" target:self selector:@selector(handleAlertEvent:)];
-	}
-	 */
 }
 
 - (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username {
@@ -491,16 +487,16 @@
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
 
 	NSString *cellText = [event.data valueForKey:@"body"];
-	UIFont *cellFont = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
 	CGSize constraintSize = CGSizeMake(message.frame.size.width, MAXFLOAT);
-	CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
-	NSLog(@"%f %f", labelSize.height, labelSize.width);
+	CGSize labelSize = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica Neue" size:16.0f]
+							constrainedToSize:constraintSize 
+								lineBreakMode:UILineBreakModeWordWrap];
 	
-	if (labelSize.height > 75) {
-		return labelSize.height + 45;		
+	if (labelSize.height > 85) {
+		return labelSize.height + 50;
 	}
 	else {
-		return 75;
+		return 85;
 	}
 }
 
@@ -511,7 +507,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	PTPusherEvent *event = [messages objectAtIndex:indexPath.row];
     if (cell == nil) {
-		if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
+		if ([[event.data objectForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
 			[[NSBundle mainBundle] loadNibNamed:@"TableCellSelf" owner:self options:nil];
 			cell = tableCellSelf;
 		}
@@ -521,23 +517,9 @@
 		}
         self.tableCell = nil;
 	}
-	
-	/*if ([messages count] > 1) {
-		PTPusherEvent *eventAbove = [messages objectAtIndex:indexPath.row -1];
-
-		if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[eventAbove.data valueForKey:@"twitter_login"]]) {
-			NSLog(@"user posted twice in a row");
-			name.text = @"twice";
-		}
-	}
-	else {*/
-		name.text = [event.data valueForKey:@"name"];
-	//}
-
 	NSString *cellText = [event.data valueForKey:@"body"];
-	UIFont *cellFont = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
 	CGSize constraintSize = CGSizeMake(message.frame.size.width, MAXFLOAT);
-	CGSize labelSize = [cellText sizeWithFont:cellFont
+	CGSize labelSize = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica Neue" size:16.0f]
 							constrainedToSize:constraintSize 
 								lineBreakMode:UILineBreakModeWordWrap];
 	CGRect frame = CGRectMake(message.frame.origin.x, message.frame.origin.y, message.frame.size.width, labelSize.height);
@@ -547,22 +529,20 @@
 	htmlLabel.textColor = [UIColor darkGrayColor];
 	htmlLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0f];
 	htmlLabel.backgroundColor = [UIColor clearColor];
-	htmlLabel.text = [TTStyledText textFromXHTML:[event.data valueForKey:@"body"]];
-	if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
+	htmlLabel.text = [attributedMessages objectAtIndex:indexPath.row];
+	if ([[event.data objectForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
 		htmlLabel.textAlignment = UITextAlignmentRight;
-		NSLog(@"message is current users");
 	}
 	else {
 		htmlLabel.textAlignment = UITextAlignmentLeft;
-		NSLog(@"message is someone elses");
 	}
 	[cell addSubview:htmlLabel];
 	
-	if (labelSize.height > 75) {
+	if (labelSize.height > 85) {
 		lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, labelSize.height + 44, 300, 2)];
 	}
 	else {
-		lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 75, 300, 2)];
+		lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 85, 300, 2)];
 	}
 	lineView.tag = 101;
 	[lineView setLineColor:[UIColor colorWithRed:186.0/255.0 
@@ -574,14 +554,7 @@
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 	time.text = nil;
-	
-	if ([[event.data valueForKey:@"twitter_login"] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"screen_name"]]) {
-		NSLog(@"this is you!");
-	}
-
-	
-	//message.text = [attributedMessages objectAtIndex:indexPath.row];
-	//[(UITextView *)[cell.contentView viewWithTag:5] setText:[attributedMessages objectAtIndex:indexPath.row]];
+	name.text = [event.data objectForKey:@"name"];
 
 	[(AsyncImageView *)[cell.contentView viewWithTag:104] setBackgroundColor:[UIColor clearColor]];
 	[(AsyncImageView *)[cell.contentView viewWithTag:104] loadImageFromURL:[NSURL URLWithString:[event.data valueForKey:@"profile_image_url"]]];

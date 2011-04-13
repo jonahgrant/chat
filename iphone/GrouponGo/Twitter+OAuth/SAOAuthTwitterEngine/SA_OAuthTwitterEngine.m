@@ -240,6 +240,7 @@
 			}
 			if ([key isEqualToString:@"user_id"]) [prefs setObject:value forKey:@"user_id"];
 			if ([key isEqualToString:@"oauth_token"]) [prefs setObject:value forKey:@"oauth_token"];
+			if ([key isEqualToString:@"oauth_token_secret"]) [prefs setObject:value forKey:@"oauth_token_secret"];
 		}
 	}
 	

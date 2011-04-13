@@ -27,7 +27,9 @@
 @class PTPusherChannel;
 
 @interface RootViewController : UIViewController <UIActionSheetDelegate, PTPusherChannelDelegate, PTPusherDelegate, NSXMLParserDelegate, UITextFieldDelegate, SA_OAuthTwitterControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
-	UITableView *table;
+	NSString *room;
+	
+	TTTableView *table;
 	UITableViewCell *tableCell;
 	UITableViewCell *tableCellSelf;
 	UILabel *name;
@@ -76,5 +78,7 @@
 - (void)sendMessage;
 - (void)refresh;
 - (NSString *)flattenHTML:(NSString *)html trimWhiteSpace:(BOOL)trim;
+- (id)initWithRoomName:(NSString *)room_name;
+- (void)setRoomTitle:(NSString *)room_name;
 
 @end
