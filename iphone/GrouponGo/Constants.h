@@ -12,5 +12,7 @@ extern NSString * const API_POST;
 
 typedef enum _GrouponGoRequestType {
 	GrouponGoRequestTypePost         = 1,  
-	GrouponGoRequestTypeGetPosts     = 2
+	GrouponGoRequestTypeGetPosts     = 2,
+	GrouponGoRequestTypeAddUser      = 3,
+	GrouponGoRequestTypeJoinRoom	 = 4
 } GrouponGoRequestType;

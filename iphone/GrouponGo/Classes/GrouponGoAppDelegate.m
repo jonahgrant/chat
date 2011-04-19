@@ -7,7 +7,12 @@
 //
 
 #import "GrouponGoAppDelegate.h"
-#import "ChatViewController.h"
+#import "RoomViewController.h"
+#import "RoomPicker.h"
+
+#import "PTPusher.h"
+#import "PTPusherEvent.h"
+#import "PTPusherChannel.h"
 
 @implementation UINavigationBar (CustomImage)
 
@@ -43,13 +48,31 @@
 
 @synthesize window;
 @synthesize navigationController;
-
+@synthesize pusher;
+@synthesize chatViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
+	[PTPusher setKey:@"534d197146cf867179ee"];
+	[PTPusher setSecret:@"4a0cf79a75eaff29cfc7"];
+	[PTPusher setAppID:@"3638"];	
+	
+	pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" delegate:self];
+	pusher.reconnect = YES;
+	
+	[pusher addEventListener:@"test-global-event" block:^(PTPusherEvent *event) {
+		NSLog(@"Received Global Event!! : %@", [event description]);
+	}];
+
+	self.chatViewController = [RoomViewController controller];
+	self.chatViewController.pusher = pusher;
+		
+	[self.navigationController pushViewController:self.chatViewController animated:NO];
+	//[self.chatViewController joinRoom:@"sd"];
+	
 	self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
@@ -92,6 +115,79 @@
      */
 }
 
+#pragma mark -
+#pragma mark Private/Presence Channel Delegate
+
+- (NSDictionary *)extraParamsForChannelAuthentication:(PTPusherChannel *)channel
+{
+	// This is for sending additional parameters to Authentication server for further validation
+	return nil;
+}
+
+- (BOOL)privateChannelShouldContinueWithAuthResponse:(NSData *)data
+{
+	// This method should check the response from the Authentication server and see if it's valid
+	return YES;
+}
+
+#pragma mark -
+#pragma mark Presence Channel Delegate
+
+- (void)presenceChannelSubscriptionSucceeded:(PTPusherChannel *)channel withUserInfo:(NSArray *)userList
+{
+	NSLog(@"pusher:subscription_succeeded received:\n%@", [userList description]);
+}
+
+- (void)presenceChannel:(PTPusherChannel *)channel memberAdded:(NSDictionary *)memberInfo
+{
+	NSLog(@"pusher:member_added received:\n%@", [memberInfo description]);
+}
+
+- (void)presenceChannel:(PTPusherChannel *)channel memberRemoved:(NSDictionary *)memberInfo
+{
+	NSLog(@"pusher:member_removed received:\n%@", [memberInfo description]);
+}
+
+#pragma mark -
+#pragma mark Private Channel Delegate
+
+- (void)channelAuthenticationStarted:(PTPusherChannel *)channel
+{
+	NSLog(@"Private Channel Authentication Started: %@", channel.name);
+}
+
+- (void)channelAuthenticationFailed:(PTPusherChannel *)channel withError:(NSError *)error
+{
+	NSLog(@"Private Channel Authentication Failed: %@", channel.name);
+}
+
+#pragma mark -
+#pragma mark PTPusherDelegate methods
+
+- (void)pusherWillConnect:(PTPusher *)_pusher;
+{
+	NSLog(@"Pusher %@ connecting...", _pusher);
+}
+
+- (void)pusherDidConnect:(PTPusher *)_pusher;
+{
+	NSLog(@"Pusher %@ connected", _pusher);
+}
+
+- (void)pusherDidDisconnect:(PTPusher *)_pusher;
+{
+	NSLog(@"Pusher %@ disconnected", _pusher);
+}
+
+- (void)pusherDidFailToConnect:(PTPusher *)_pusher withError:(NSError *)error;
+{
+	NSLog(@"Pusher %@ failed with error %@", _pusher, error);
+}
+
+- (void)pusherWillReconnect:(PTPusher *)_pusher afterDelay:(NSUInteger)delay;
+{
+	NSLog(@"Pusher %@ will reconnect after %d seconds", _pusher, delay);
+}
 
 #pragma mark -
 #pragma mark Memory management
@@ -103,9 +199,11 @@
 }
 
 
+
 - (void)dealloc {
 	[navigationController release];
 	[window release];
+	[pusher release];
 	[super dealloc];
 }
 

@@ -27,7 +27,7 @@
 	[PTPusher setAppID:@"3638"];
   
   
-  pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" channel:@"groupon_go"];
+  pusher = [[PTPusher alloc] initWithKey:@"534d197146cf867179ee" channel:@"presence-groupon_go_48_"];
   pusher.delegate = self;
   
   // uncomment to allow reconnections

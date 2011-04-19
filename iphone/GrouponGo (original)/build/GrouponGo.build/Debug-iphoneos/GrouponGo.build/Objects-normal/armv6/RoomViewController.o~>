@@ -1,0 +1,22 @@
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m: In function '-[RoomViewController tableView:cellForRowAtIndexPath:]':
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:478: warning: no '-loadImageFromURL:' method found
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:478: warning: (Messages without a matching method signature
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:478: warning: will be assumed to return 'id' and accept
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:478: warning: '...' as arguments.)
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m: At top level:
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'roomName' requires method '-roomName' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'roomName' requires the method 'setRoomName:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'roomCount' requires method '-roomCount' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'roomCount' requires the method 'setRoomCount:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'nameOfRoom' requires method '-nameOfRoom' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'nameOfRoom' requires the method 'setNameOfRoom:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'messageName' requires method '-messageName' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'messageName' requires the method 'setMessageName:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'messageBody' requires method '-messageBody' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'messageBody' requires the method 'setMessageBody:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'avatar' requires method '-avatar' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'avatar' requires the method 'setAvatar:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'avatarFrame' requires method '-avatarFrame' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: property 'avatarFrame' requires the method 'setAvatarFrame:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: incomplete implementation of class 'RoomViewController'
+/Users/jonahgrant/chat/iphone/GrouponGo/Classes/RoomViewController.m:566: warning: method definition for '-roomNameWithString:' not found

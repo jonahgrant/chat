@@ -53,12 +53,32 @@ static GrouponGoModel *sharedModel = nil;
 	GrouponGoRequest *request = [GrouponGoRequest requestWithURL:[NSURL URLWithString:@"http://go.groupon.com/posts"]];
 	[request setPostValue:[prefs stringForKey:@"user_id"] forKey:@"user_id"];
 	[request setPostValue:body forKey:@"message"];
+	[request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"oauth_token"] forKey:@"oauth_token"];
 	
 	[request setDelegate:self];
 	[request setRequestType:GrouponGoRequestTypePost];
 	[request startAsynchronous];
 	
 	NSLog(@"posted %@", body);
+}
+
+- (void)addUserToDatabase
+{
+	GrouponGoRequest *request = [GrouponGoRequest requestWithURL:[NSURL URLWithString:@"http://go.groupon.com/users"]];
+	[request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"oauth_token"] forKey:@"oauth_token"];
+	[request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"oauth_token_secret"] forKey:@"oauth_secret"];
+
+	[request setDelegate:self];
+	[request setRequestType:GrouponGoRequestTypeAddUser];
+	[request startAsynchronous];
+}
+
+- (void)joinRoomWithKeyname:(NSString *)name
+{
+	GrouponGoRequest *request = [GrouponGoRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://go.groupon.com/rooms/%@.json", name]]];
+	[request setRequestType:GrouponGoRequestTypeJoinRoom];
+	[request setDelegate:self];
+	[request startAsynchronous];
 }
 
 #pragma mark Delegate methods
@@ -75,11 +95,21 @@ static GrouponGoModel *sharedModel = nil;
 	switch ([request requestType]) {
 		case GrouponGoRequestTypePost:
 			NSLog(@"posting successful");
+			[delegate performSelector:@selector(messagePosted) withObject:nil];
 		break;
 		case GrouponGoRequestTypeGetPosts:
 			NSLog(@"Getting posts successful");
 			NSLog(@"GrouponGoRequestTypeGetPosts: %@", [request responseString]);
 		break;
+			case GrouponGoRequestTypeAddUser:
+			NSLog(@"GrouponGoRequestTypeAddUser: %@", [request responseString]);
+		break;
+			case GrouponGoRequestTypeJoinRoom:
+			NSLog(@"GrouponGoRequestTypeJoinRoom %@", [[request responseString] JSONValue]);
+			//[delegate performSelector:@selector(
+			break;
+
+
 
 	}
 }

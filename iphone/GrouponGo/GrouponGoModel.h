@@ -18,5 +18,7 @@
 
 - (void)refreshChat;
 - (void)postWithBody:(NSString *)body;
+- (void)addUserToDatabase;
+- (void)joinRoomWithKeyname:(NSString *)name;
 
 @end

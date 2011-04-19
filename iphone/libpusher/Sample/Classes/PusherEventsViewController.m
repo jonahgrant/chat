@@ -25,7 +25,7 @@
     eventsReceived = [[NSMutableArray alloc] init];
   }
   if (eventsChannel == nil) {
-    eventsChannel = [PTPusher newChannel:@"groupon_go"];
+    eventsChannel = [PTPusher newChannel:@"presence-groupon_go_48_"];
     eventsChannel.delegate = self;
   }
   [eventsChannel startListeningForEvents];
